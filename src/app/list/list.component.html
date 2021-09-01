@@ -1,0 +1,19 @@
+
+<input #inputName type="text" [value]="nameVal" (keyup)="onKeyUpHandler(inputName.value)" />
+
+
+<div>
+
+    <input #taskInput type="text" />
+    <button (click)="addTask(taskInput.value); taskInput.value='';">add</button>
+</div>
+
+
+<div id="todo-list">
+
+
+
+    <app-todo-item  *ngFor="let todoEl of listOfTodo; let indx = index" [todoItem]='todoEl' >
+
+    </app-todo-item>
+</div>
