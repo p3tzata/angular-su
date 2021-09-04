@@ -2,6 +2,12 @@
 <div class="todo-list-item" >
 <span [ngClass]="{'completed': todoItem.completed}" >{{todoItem.task}}</span>
 <span>---</span>
+{{todoIndemIndx}}
+<span>---</span>
+<span *ngIf="!todoItem.completed" >Pending...</span>
 <span>{{todoItem.completed}}</span>
-<button (click)="toggleComplition(22)">Toggle complition</button>
+<button (click)="toggleComplition()">Toggle complition</button>
+<ng-content select=".header" ></ng-content>
+<ng-content></ng-content>
+<ng-content select=".footer" ></ng-content>
 </div>

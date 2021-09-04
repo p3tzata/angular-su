@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {ITodoTask} from '../interfaces';
 
 
@@ -11,14 +11,27 @@ export class TodoItemComponent implements OnInit {
 
   @Input()
   todoItem!: ITodoTask;
+  
+  @Input()
+  todoIndemIndx!: number; 
 
+
+  @Output()
+  //toggleEvent: EventEmitter<void> = new EventEmitter();
+  toggleEvent: EventEmitter<string> = new EventEmitter();
+  
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChange() {
+    console.log("changed");
   }
 
-  toggleComplition(indx: number) {
+  ngOnInit(): void {
+    console.log("init");
+  }
 
+  toggleComplition() {
+    this.toggleEvent.emit('this is only if we want to send some data');
   }
 
 }

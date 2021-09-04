@@ -13,7 +13,14 @@
 
 
 
-    <app-todo-item  *ngFor="let todoEl of listOfTodo; let indx = index" [todoItem]='todoEl' >
+    <app-todo-item  *ngFor="let todoEl of listOfTodo; let indx = index" [todoItem]='todoEl' [todoIndemIndx]="indx"  (toggleEvent)="toggleComplition(indx, $event)" >
+        <div class="header">This is header</div>
 
+        This is for ng content test: {{indx}}
+        
+        <div class="footer">This is footer</div>
     </app-todo-item>
+
 </div>
+<br>
+<img [attr.src]="imgURL" width="200" height="130" >
