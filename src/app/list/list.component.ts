@@ -1,4 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ITodoTask } from '../interfaces';
+import { TodoService } from '../serviceLearning/todo.service';
+
 
 @Component({
   selector: 'app-list',
@@ -7,15 +10,35 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class ListComponent implements OnInit {
   nameVal: string;
-  listOfTodo: any[];
+  
   imgURL="https://images.freeimages.com/images/large-previews/7e9/ladybird-1367182.jpg"
 
   @ViewChild('taskInput')
   taskInputEl!: ElementRef;
 
-  constructor() {
+  constructor(private todoService: TodoService) {
+   
     this.nameVal="test value";
-    this.listOfTodo = [];
+    
+
+    //Testing changeDetection
+    /*
+    setTimeout(
+        ()=>{
+          debugger;
+        //This will work in both ChangeDetectionStrategy.{onPush,Default} (of TodoItemComponent)
+        //const currentTodo = this.listOfTodo[0];
+        //this.listOfTodo[0]={...currentTodo, completed: !currentTodo.completed};
+
+         //This will not work if changeDetection in ChangeDetectionStrategy.onPush(of TodoItemComponent),
+         // because there is no new reference.
+          this.listOfTodo[0].completed=!this.listOfTodo[0].completed
+
+
+        },5000
+    );
+        */
+
    }
 
    ngAfterViewInit(): void {
@@ -35,14 +58,15 @@ export class ListComponent implements OnInit {
   }
 
   addTask(task: string){
-    console.log(task);
-    this.listOfTodo= this.listOfTodo.concat({task: task, completed: false });
+    this.todoService.addTask(task);
   }
 
   toggleComplition(indx: number, data:string){
-    console.log(data);
-    const currentTodo = this.listOfTodo[indx];
-    this.listOfTodo[indx]={...currentTodo, completed: !currentTodo.completed};
+    this.todoService.toggleComplition(indx,data);
+  }
+
+  todoGetAll(): ITodoTask[] {
+    return this.todoService.listOfTodo;
   }
 
 }

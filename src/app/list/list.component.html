@@ -13,7 +13,7 @@
 
 
 
-    <app-todo-item  *ngFor="let todoEl of listOfTodo; let indx = index" [todoItem]='todoEl' [todoIndemIndx]="indx"  (toggleEvent)="toggleComplition(indx, $event)" >
+    <app-todo-item  *ngFor="let todoEl of todoGetAll(); let indx = index" [todoItem]='todoEl' [todoIndemIndx]="indx"  (toggleEvent)="toggleComplition(indx, $event)" >
         <div class="header">This is header</div>
 
         This is for ng content test: {{indx}}

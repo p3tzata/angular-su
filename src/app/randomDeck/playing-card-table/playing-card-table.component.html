@@ -1,0 +1,17 @@
+<div>
+    <div class="main-table">
+        
+        <div class="main-table-cardHolder">
+            
+                <app-playing-card *ngFor="let playCard of displayCard" [playCardInput]="playCard"></app-playing-card>
+           
+        </div>
+
+        <div class="main-table-buttons">
+        <button [disabled]="pickNextCardsIsDisabled" (click)="pickNextCards()">Next Cards {{appendCounterToPickBtn}}</button>
+        <button (click)="generate()">Generate</button>
+        </div>
+    </div>
+
+
+</div>

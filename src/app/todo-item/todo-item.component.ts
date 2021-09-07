@@ -1,11 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import {ITodoTask} from '../interfaces';
 
 
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.css']
+  styleUrls: ['./todo-item.component.css'],
+  /* Test changeDetection
+  changeDetection:ChangeDetectionStrategy.OnPush
+  */
 })
 export class TodoItemComponent implements OnInit {
 
@@ -19,7 +22,7 @@ export class TodoItemComponent implements OnInit {
   @Output()
   //toggleEvent: EventEmitter<void> = new EventEmitter();
   toggleEvent: EventEmitter<string> = new EventEmitter();
-  
+
   constructor() { }
 
   ngOnChange() {
