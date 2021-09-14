@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,9 +11,8 @@ import { ProductComponent } from './componentExam/product/product.component';
 import { ProductsComponent } from './componentExam/products/products.component';
 import { MainServiceComponent } from './serviceLearning/main-service/main-service.component';
 import { TodoService } from './serviceLearning/todo.service';
-import { MainRandomDeckComponent } from './randomDeck/main-random-deck/main-random-deck.component';
-import { PlayingCardComponent } from './randomDeck/playing-card/playing-card.component';
-import { PlayingCardTableComponent } from './randomDeck/playing-card-table/playing-card-table.component';
+import { MainMoviesDbComponent } from './moviesDb/main-movies-db/main-movies-db.component';
+
 
 @NgModule({
   declarations: [
@@ -23,17 +23,16 @@ import { PlayingCardTableComponent } from './randomDeck/playing-card-table/playi
     ProductComponent,
     ProductsComponent,
     MainServiceComponent,
-    MainRandomDeckComponent,
-    PlayingCardComponent,
-    PlayingCardTableComponent
+    MainMoviesDbComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     {provide:TodoService,
-    useClass:TodoService}
+    useClass:TodoService} //This is not necessary when provideIn is used.
   ],
   bootstrap: [AppComponent]
 })

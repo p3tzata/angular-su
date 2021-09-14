@@ -1,9 +1,14 @@
 
 <input #inputName type="text" [value]="nameVal" (keyup)="onKeyUpHandler(inputName.value)" />
+<br>
+<br>
+<br>
+<br>
+
 
 
 <div>
-
+    <input #taskFilterInput type="text" />
     <input #taskInput type="text" />
     <button (click)="addTask(taskInput.value); taskInput.value='';">add</button>
 </div>
@@ -12,14 +17,23 @@
 <div id="todo-list">
 
 
+<!-- <app-todo-item  *ngFor="let todoEl of todoGetAll(); let indx = index" [todoItem]='todoEl' [todoIndemIndx]="indx"  (toggleEvent)="toggleComplition(indx, $event)" > 
+        <div class="header">This is header</div>
 
-    <app-todo-item  *ngFor="let todoEl of todoGetAll(); let indx = index" [todoItem]='todoEl' [todoIndemIndx]="indx"  (toggleEvent)="toggleComplition(indx, $event)" >
+        This is for ng content test: {{indx}}
+        
+        <div class="footer">This is footer</div>
+    </app-todo-item> -->
+   
+    <app-todo-item  *ngFor="let todoEl of listOfTodo; let indx = index" [todoItem]='todoEl' [todoIndemIndx]="indx"  (toggleEvent)="toggleComplition(indx, $event)" > 
         <div class="header">This is header</div>
 
         This is for ng content test: {{indx}}
         
         <div class="footer">This is footer</div>
     </app-todo-item>
+
+
 
 </div>
 <br>

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainRandomDeckComponent } from './main-random-deck.component';
+import { MainMoviesDbComponent } from './main-movies-db.component';
 
-describe('MainRandomDeckComponent', () => {
-  let component: MainRandomDeckComponent;
-  let fixture: ComponentFixture<MainRandomDeckComponent>;
+describe('MainMoviesDbComponent', () => {
+  let component: MainMoviesDbComponent;
+  let fixture: ComponentFixture<MainMoviesDbComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainRandomDeckComponent ]
+      declarations: [ MainMoviesDbComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainRandomDeckComponent);
+    fixture = TestBed.createComponent(MainMoviesDbComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

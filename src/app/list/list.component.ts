@@ -1,4 +1,7 @@
+
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { fromEvent } from 'rxjs';
+import { map,debounceTime,delay, mergeScan,scan, tap,share, take } from 'rxjs/operators';
 import { ITodoTask } from '../interfaces';
 import { TodoService } from '../serviceLearning/todo.service';
 
@@ -13,12 +16,24 @@ export class ListComponent implements OnInit {
   
   imgURL="https://images.freeimages.com/images/large-previews/7e9/ladybird-1367182.jpg"
 
+  @ViewChild('taskFilterInput')
+  taskFilterInputEl!: ElementRef;
+
+
   @ViewChild('taskInput')
   taskInputEl!: ElementRef;
 
+  listOfTodo!: ITodoTask[]; 
+
   constructor(private todoService: TodoService) {
-   
     this.nameVal="test value";
+   
+    //debugger;
+    todoService.loadExternal();
+    
+
+
+    
     
 
     //Testing changeDetection
@@ -42,13 +57,36 @@ export class ListComponent implements OnInit {
    }
 
    ngAfterViewInit(): void {
-    //create breack point. In console of chrome I can type "this" and this will print the corrent component.
+    //create break point. In console of chrome I can type "this" and this will print the corrent component.
     //debugger;
    
      console.log("ngAfterViewInit->" + this.taskInputEl.nativeElement.value);
-   this.taskInputEl.nativeElement.value="Test afterViewInit()";
+     this.taskInputEl.nativeElement.value="Test afterViewInit()";
+
+
+     const stream$ = fromEvent<KeyboardEvent>(this.taskFilterInputEl.nativeElement,"keyup")
+     .pipe( debounceTime(200) )
+     .pipe( map( e => this.taskFilterInputEl.nativeElement.value ) )
+     .pipe( tap({
+                next: x => {console.log("TAP: " + x); },
+                error: err => { console.error("TAP: " + err); },
+                }))//Used to spay streem.
+      .pipe( share() )// Determine cold or hot observer.
+      ;
+     
+     // With share() - hot observers, without share() cold observers.
+     stream$.subscribe( (e) => {console.log("Stream 1:" + e)} );
+     stream$.subscribe( (e) => {console.log("Stream 2:" + e)} ); //The second is bad. on cold
+    
+
+
   } 
 
+  // This check is called by decision of angular
+  ngDoCheck(){
+    //debugger;
+    this.listOfTodo=this.todoService.listOfTodo;
+  }
 
   ngOnInit(): void {
   }

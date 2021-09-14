@@ -30,7 +30,7 @@ export class TodoItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("init");
+   // console.log("init");
   }
 
   toggleComplition() {

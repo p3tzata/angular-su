@@ -5,7 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
 //This is my addition.
-import './app/eventEmitter/todoItemEventEmitter';
+//import './app/eventEmitter/todoItemEventEmitter';
 
 if (environment.production) {
   enableProdMode();

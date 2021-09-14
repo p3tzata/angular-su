@@ -1,5 +1,5 @@
 export interface ITodoTask {
-    task: string,
+    title: string,
     completed: boolean
 
 }
