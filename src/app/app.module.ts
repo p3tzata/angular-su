@@ -12,6 +12,9 @@ import { ProductsComponent } from './componentExam/products/products.component';
 import { MainServiceComponent } from './serviceLearning/main-service/main-service.component';
 import { TodoService } from './serviceLearning/todo.service';
 import { MainMoviesDbComponent } from './moviesDb/main-movies-db/main-movies-db.component';
+import { MoviesDbNavBarComponent } from './moviesDb/movies-db-nav-bar/movies-db-nav-bar.component';
+import { MoviesDbPageLandingComponent } from './moviesDb/movies-db-page-landing/movies-db-page-landing.component';
+
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { MainMoviesDbComponent } from './moviesDb/main-movies-db/main-movies-db.
     ProductComponent,
     ProductsComponent,
     MainServiceComponent,
-    MainMoviesDbComponent
+    MainMoviesDbComponent,
+    MoviesDbNavBarComponent,
+    MoviesDbPageLandingComponent
   ],
   imports: [
     BrowserModule,
