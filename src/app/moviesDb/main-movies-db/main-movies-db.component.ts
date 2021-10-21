@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-main-movies-db',
   templateUrl: './main-movies-db.component.html',
@@ -11,5 +12,7 @@ export class MainMoviesDbComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  
 
 }

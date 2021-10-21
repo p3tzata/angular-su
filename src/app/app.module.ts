@@ -14,6 +14,8 @@ import { TodoService } from './serviceLearning/todo.service';
 import { MainMoviesDbComponent } from './moviesDb/main-movies-db/main-movies-db.component';
 import { MoviesDbNavBarComponent } from './moviesDb/movies-db-nav-bar/movies-db-nav-bar.component';
 import { MoviesDbPageLandingComponent } from './moviesDb/movies-db-page-landing/movies-db-page-landing.component';
+import { MoviesComponent } from './moviesDb/movies/movies.component';
+import { MovieComponent } from './moviesDb/movie/movie.component';
 
 
 
@@ -28,7 +30,9 @@ import { MoviesDbPageLandingComponent } from './moviesDb/movies-db-page-landing/
     MainServiceComponent,
     MainMoviesDbComponent,
     MoviesDbNavBarComponent,
-    MoviesDbPageLandingComponent
+    MoviesDbPageLandingComponent,
+    MoviesComponent,
+    MovieComponent
   ],
   imports: [
     BrowserModule,
