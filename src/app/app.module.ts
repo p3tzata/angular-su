@@ -11,11 +11,13 @@ import { ProductComponent } from './componentExam/product/product.component';
 import { ProductsComponent } from './componentExam/products/products.component';
 import { MainServiceComponent } from './serviceLearning/main-service/main-service.component';
 import { TodoService } from './serviceLearning/todo.service';
-import { MainMoviesDbComponent } from './moviesDb/main-movies-db/main-movies-db.component';
-import { MoviesDbNavBarComponent } from './moviesDb/movies-db-nav-bar/movies-db-nav-bar.component';
-import { MoviesDbPageLandingComponent } from './moviesDb/movies-db-page-landing/movies-db-page-landing.component';
-import { MoviesComponent } from './moviesDb/movies/movies.component';
-import { MovieComponent } from './moviesDb/movie/movie.component';
+
+import { MoviesDbNavBarComponent } from './moviesDb/movie-component/movies-db-nav-bar/movies-db-nav-bar.component';
+import { MoviesDbPageLandingComponent } from './moviesDb/movie-component/movies-db-page-landing/movies-db-page-landing.component';
+import { MoviesComponent } from './moviesDb/movie-component/movies/movies.component';
+import { MovieComponent } from './moviesDb/movie-component/movie/movie.component';
+import { MainMoviesDbComponent } from './moviesDb/movie-component/main-movies-db/main-movies-db.component';
+import { FooterComponent } from './moviesDb/movie-component/footer/footer.component';
 
 
 
@@ -32,7 +34,8 @@ import { MovieComponent } from './moviesDb/movie/movie.component';
     MoviesDbNavBarComponent,
     MoviesDbPageLandingComponent,
     MoviesComponent,
-    MovieComponent
+    MovieComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

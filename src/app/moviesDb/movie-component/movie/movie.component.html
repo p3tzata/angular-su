@@ -1,12 +1,12 @@
 <div class="card mb-3">
 
 
-    <img height="200px" width="100%" src="/assets/images/ladybird.jpg"/>
+    <img height="200px" width="100%" [attr.src]="movie.image_url"/>
     <div class="card-body">
       <p class="card-text">{{movie.title}}</p>
     </div>
     <div class="card-body">
-      <a href="#" class="card-link">More Info</a>
+      <a href="#" class="card-link" (click)="clickButton()">More Info</a>
       
     </div>
   
