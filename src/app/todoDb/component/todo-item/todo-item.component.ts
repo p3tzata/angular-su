@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
-import {ITodoTask} from '../interfaces';
+import { ITodoTask } from 'src/app/interfaces';
+
 
 
 @Component({

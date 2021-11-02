@@ -2,8 +2,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { map,debounceTime,delay, mergeScan,scan, tap,share, take } from 'rxjs/operators';
-import { ITodoTask } from '../interfaces';
-import { TodoService } from '../serviceLearning/todo.service';
+import { ITodoTask } from '../../../interfaces';
+import { TodoService } from '../../../serviceLearning/todo.service';
 
 
 @Component({

@@ -1,0 +1,7 @@
+<p>This is todo list</p>
+<input type="checkbox" name="myData" [(ngModel)]="enableLeave">
+<b> Cleck here if you want to activate leaving of this page</b>
+<br>
+<div *ngFor="let todo of todoTask" [ngClass]="{'completed':todo.completed}">
+    {{todo.title}}
+</div>
