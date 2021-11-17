@@ -1,7 +1,11 @@
 <p>This is todo list</p>
-<input type="checkbox" name="myData" [(ngModel)]="enableLeave">
-<b> Cleck here if you want to activate leaving of this page</b>
+
+<b><div class="blink_me"><input type="checkbox" name="myData" [(ngModel)]="enableLeave">
+     Cleck here if you want to activate leaving of this page</div></b>
+<br>
+<br>
+<br>
 <br>
 <div *ngFor="let todo of todoTask" [ngClass]="{'completed':todo.completed}">
-    {{todo.title}}
+  <span>{{todo.title}}</span> <a [routerLink]="['/todo-list/detail/',todo.id]" [queryParams]="{test:'test'}" routerLinkActive="active"> Detail</a> 
 </div>

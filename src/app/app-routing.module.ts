@@ -7,6 +7,13 @@ import { TodoListComponent } from './todoDb/component/todo-list/todo-list.compon
 import { TodoCanDeactivateGuard } from './todoDb/guard/todo-can-deactivate.guard';
 import { TodoGuard } from './todoDb/guard/todo.guard';
 import { TodoResolver } from './todoDb/resolver/todo.resolver';
+import {TodoDetailComponent} from "./todoDb/component/todo-detail/todo-detail.component";
+import {TodoList1Component} from "./todoDb/component/todo-list1/todo-list1.component";
+import {TodoList2Component} from "./todoDb/component/todo-list2/todo-list2.component";
+import {NotfoundComponent} from "./todoDb/component/notfound/notfound.component";
+import {ChildRouterOutledChild1Component} from "./todoDb/component/child-router-outled-child1/child-router-outled-child1.component";
+import {ChildRouterOutledChild2Component} from "./todoDb/component/child-router-outled-child2/child-router-outled-child2.component";
+import {ChildRouterOutledComponent} from "./todoDb/component/child-router-outled/child-router-outled.component";
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
 
@@ -32,12 +39,39 @@ const routes: Routes = [
     canDeactivate: [TodoCanDeactivateGuard],
     component: TodoListComponent
   },
+  {path: "todo-list/detail/:id",
+   component: TodoDetailComponent
+  },
+
+
   {
     path: 'about',
     pathMatch: 'full',
     component: AboutComponent
-  }
+  },
+  {path: 'todo',
+  children: [
+    {path: "list1",
+    component: TodoList1Component},
+    {path: "list2",
+    component: TodoList2Component}
+  ]
 
+  },
+  {path: "child-router-outlet",
+  component: ChildRouterOutledComponent,
+  children: [
+    {path: "child1",
+    component: ChildRouterOutledChild1Component,
+    outlet:'childRouterOutlet'},
+    {path: "child2",
+    component: ChildRouterOutledChild2Component,
+    outlet:'childRouterOutlet'}
+  ]
+  }, 
+  {path: "**",
+  component: NotfoundComponent}
+  
 
 ];
 

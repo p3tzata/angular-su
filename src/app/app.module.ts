@@ -26,6 +26,13 @@ import { CoreModule } from './core/core.module';
 import { TodoListComponent } from './todoDb/component/todo-list/todo-list.component';
 
 import { FormsModule } from '@angular/forms';
+import { TodoDetailComponent } from './todoDb/component/todo-detail/todo-detail.component';
+import { TodoList1Component } from './todoDb/component/todo-list1/todo-list1.component';
+import { TodoList2Component } from './todoDb/component/todo-list2/todo-list2.component';
+import { NotfoundComponent } from './todoDb/component/notfound/notfound.component';
+import { ChildRouterOutledComponent } from './todoDb/component/child-router-outled/child-router-outled.component';
+import { ChildRouterOutledChild1Component } from './todoDb/component/child-router-outled-child1/child-router-outled-child1.component';
+import { ChildRouterOutledChild2Component } from './todoDb/component/child-router-outled-child2/child-router-outled-child2.component';
 
 
 @NgModule({
@@ -45,7 +52,14 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    TodoListComponent
+    TodoListComponent,
+    TodoDetailComponent,
+    TodoList1Component,
+    TodoList2Component,
+    NotfoundComponent,
+    ChildRouterOutledComponent,
+    ChildRouterOutledChild1Component,
+    ChildRouterOutledChild2Component
   ],
   imports: [
     BrowserModule,

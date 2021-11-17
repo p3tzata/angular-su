@@ -11,7 +11,7 @@ export class TodoService {
   
   constructor(private httpClient: HttpClient) { 
     this.listOfTodo=[];
-    this.listOfTodo[0]={title: "test", completed: false };
+    this.listOfTodo[0]={id: 1,title: "test", completed: false };
   }
 
 
@@ -25,7 +25,7 @@ export class TodoService {
 
   addTask(title: string){
     console.log(title);
-    this.listOfTodo= this.listOfTodo.concat({title: title, completed: false });
+    this.listOfTodo= this.listOfTodo.concat({id:1,title: title, completed: false });
   }
 
   toggleComplition(indx: number, data:string){
