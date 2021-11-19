@@ -6,8 +6,9 @@
       <p class="card-text">{{movie.title}}</p>
     </div>
     <div class="card-body">
-      <a href="#" class="card-link" (click)="clickButton()">More Info</a>
       
+      <button class="card-link" (click)="clickButton()">Click me</button>
+      <a [routerLink]="['/movieDb/detail',movie.id]">Detail</a>
     </div>
   
 

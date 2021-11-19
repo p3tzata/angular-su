@@ -4,7 +4,10 @@
     <div class="col-lg-2" *ngFor="let singleMovie of popularMovie">
         <app-movie [movie]="singleMovie" (clickButtonEventEmitter)="childButtonClicked($event)" ></app-movie>
     </div>
+</div>
 
-        
- 
+<div class="row">
+    <div class="col-lg-2" *ngFor="let singleMovie of popularKidsMovie">
+        <app-movie [movie]="singleMovie" (clickButtonEventEmitter)="childButtonClicked($event)" ></app-movie>
+    </div>
 </div>

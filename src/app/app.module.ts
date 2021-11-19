@@ -33,6 +33,7 @@ import { NotfoundComponent } from './todoDb/component/notfound/notfound.componen
 import { ChildRouterOutledComponent } from './todoDb/component/child-router-outled/child-router-outled.component';
 import { ChildRouterOutledChild1Component } from './todoDb/component/child-router-outled-child1/child-router-outled-child1.component';
 import { ChildRouterOutledChild2Component } from './todoDb/component/child-router-outled-child2/child-router-outled-child2.component';
+import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/movie-detail.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { ChildRouterOutledChild2Component } from './todoDb/component/child-route
     NotfoundComponent,
     ChildRouterOutledComponent,
     ChildRouterOutledChild1Component,
-    ChildRouterOutledChild2Component
+    ChildRouterOutledChild2Component,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,

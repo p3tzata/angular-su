@@ -14,13 +14,25 @@ import {NotfoundComponent} from "./todoDb/component/notfound/notfound.component"
 import {ChildRouterOutledChild1Component} from "./todoDb/component/child-router-outled-child1/child-router-outled-child1.component";
 import {ChildRouterOutledChild2Component} from "./todoDb/component/child-router-outled-child2/child-router-outled-child2.component";
 import {ChildRouterOutledComponent} from "./todoDb/component/child-router-outled/child-router-outled.component";
+import {MainMoviesDbComponent} from "./moviesDb/movie-component/main-movies-db/main-movies-db.component";
+import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/movie-detail.component';
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
 
 const routes: Routes = [
+  {path: 'movieDb',
+   
+   
+   children: [
+    {path: '', pathMatch:"full" ,component: MainMoviesDbComponent}, 
+    {path: 'detail/:id', component: MovieDetailComponent},
+     
+   ]
+  },
   {path: '',
    pathMatch: "full",
-  redirectTo: "home"},
+  redirectTo: "home"
+  },
    {
      path: 'home',
      component: HomeComponent
