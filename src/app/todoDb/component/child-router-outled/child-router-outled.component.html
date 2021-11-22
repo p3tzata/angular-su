@@ -1,0 +1,8 @@
+<p>child-router-outled works!</p>
+<nav>
+<a [routerLink]="['/child-router-outlet',{outlets: {'childRouterOutlet':['child1'] }} ]">Child One</a>
+-
+<a [routerLink]="['/child-router-outlet',{outlets: {'childRouterOutlet':['child2'] }} ]">Child Two</a>
+</nav>
+<input type="text"/>
+<router-outlet name="childRouterOutlet"></router-outlet>

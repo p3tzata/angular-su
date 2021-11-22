@@ -1,0 +1,12 @@
+<p>todo-detail works!</p>
+
+<ng-template #todoDetail>
+    {{todo.title}}
+</ng-template>
+
+<ng-template #isLoading>
+loading...
+</ng-template>
+
+
+<ng-container *ngIf="todo then todoDetail else isLoading"></ng-container>

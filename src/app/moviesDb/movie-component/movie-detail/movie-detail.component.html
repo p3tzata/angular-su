@@ -1,0 +1,13 @@
+<div class="container w-50 mt-5">
+    <h3 class="panel-title">{{movieDetailProjection.title}}</h3>
+      <img height="200px" width="100%" class="thumbnail" src="{{movieDetailProjection.image_url}}">
+      <ul class="list-group">
+        <li class="list-group-item">Genres:
+          <span >{{movieDetailProjection.genres}} </span>
+        </li>
+        <li class="list-group-item">Release Date: {{movieDetailProjection.release_date}}</li>
+      </ul>
+      <a *ngIf="movieDetailProjection.homepage" 
+      href="http://{{movieDetailProjection.homepage}}" target="_blank" class="btn btn-default">Visit Movie
+        Website</a>
+  </div>
