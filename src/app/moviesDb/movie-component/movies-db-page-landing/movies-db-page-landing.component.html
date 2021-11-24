@@ -4,12 +4,13 @@
 	  <p>Search for a movie using the form below:</p>
 	  
 	  <form  #f="ngForm" (ngSubmit)="searchSubmit()" >
-		<input required [(ngModel)]="searchVal" class="form-control input-lg" type="text" placeholder="Search" aria-label="Search">
-		<button class="btn btn-dark mt-2" type="submit">Search</button>
+		<input required ngModel minlength="4"  name="searchValue" class="form-control input-lg" type="text" placeholder="Search" aria-label="Search">
+		<button [disabled]='f.invalid' class="btn btn-dark mt-2" type="submit">Search</button>
 	  </form>
 
-
 	</div>
+	
+
  </div>
 
 <app-movies></app-movies>

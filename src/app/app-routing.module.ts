@@ -17,6 +17,7 @@ import {ChildRouterOutledComponent} from "./todoDb/component/child-router-outled
 import {MainMoviesDbComponent} from "./moviesDb/movie-component/main-movies-db/main-movies-db.component";
 import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/movie-detail.component';
 import { MovieDetailResolver } from './moviesDb/movies-resolver/movie-detail.resolver';
+import { MovieSearchComponent } from './moviesDb/movie-component/movie-search/movie-search.component';
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
 
@@ -27,7 +28,7 @@ const routes: Routes = [
    children: [
     {path: '', pathMatch:"full" ,component: MainMoviesDbComponent}, 
     {path: 'detail/:id', component: MovieDetailComponent, resolve: {detailResolve: MovieDetailResolver}},
-     
+     {path: 'search/:queryString', component: MovieSearchComponent}
    ]
   },
   {path: '',

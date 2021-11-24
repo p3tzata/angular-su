@@ -38,4 +38,11 @@ export class MovieService {
    }
 
 
+   
+
+   public getSearchMovies(searchString: string):Observable<Movie[]>{
+    let movies$ = this.httClient.get<MovieRes>(this.base_url+`/movie/search/${searchString}`+"?"+this.fake_api_key);
+    return movies$.pipe(map(x=>x.result));
+   }
+
 }

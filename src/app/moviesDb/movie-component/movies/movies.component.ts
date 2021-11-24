@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { forkJoin, Subscription } from 'rxjs';
 import Movie from '../../movies-model/movie';
 import { MovieService } from '../../movies-services/movie.service';
 
@@ -21,25 +21,14 @@ export class MoviesComponent implements OnInit,OnDestroy {
 
   ngOnInit(): void {
     this.popularMovie$=this.moviesService.getPopularMovies().subscribe(data => {
-       
-     //  console.log(data);
          this.popularMovie=data;
-        // this.popularMovie=data['result'];
-       
-       // console.log("Popular movies:"+dataa);
-       // this.popularMovie.forEach(x=>console.log(x));
-       
       });
 
       this.popularKidsMovie$=this.moviesService.getPopularKidsMovies().subscribe(data => {
         this.popularKidsMovie=data;
-       // console.log("Popular movies:"+dataa);
-       // this.popularMovie.forEach(x=>console.log(x));
-       
       });
+     
 
-
-      
   }
 
  

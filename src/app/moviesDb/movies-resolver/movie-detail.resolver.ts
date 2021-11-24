@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {forkJoin} from 'rxjs'
 import {
   Router, Resolve,
   RouterStateSnapshot,
@@ -11,13 +12,19 @@ import { MovieService } from '../movies-services/movie.service';
 @Injectable({
   providedIn: 'root'
 })
-export class MovieDetailResolver implements Resolve<MovieDetailProjection> {
+export class MovieDetailResolver implements Resolve<any> {
 
   constructor(private srv: MovieService) {
 
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<MovieDetailProjection> {
-    return this.srv.getMovieById(route.params.id);
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+   
+   
+    
+    return forkJoin( {first: this.srv.getMovieById(route.params.id),
+                      second: this.srv.getMovieById(route.params.id)});
   }
 }
+
+

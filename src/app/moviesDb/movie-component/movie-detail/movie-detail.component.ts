@@ -13,7 +13,12 @@ import { MovieService } from '../../movies-services/movie.service';
 export class MovieDetailComponent implements OnInit {
   movieDetailProjection!: MovieDetailProjection;
   constructor(private activatedRoute:ActivatedRoute, private service:MovieService) { 
-      this.movieDetailProjection=this.activatedRoute.snapshot.data['detailResolve'];
+      let joined=this.activatedRoute.snapshot.data['detailResolve'];
+      
+      this.movieDetailProjection=joined.first;
+      
+
+
   }
 
   ngOnInit(): void {

@@ -34,6 +34,8 @@ import { ChildRouterOutledComponent } from './todoDb/component/child-router-outl
 import { ChildRouterOutledChild1Component } from './todoDb/component/child-router-outled-child1/child-router-outled-child1.component';
 import { ChildRouterOutledChild2Component } from './todoDb/component/child-router-outled-child2/child-router-outled-child2.component';
 import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/movie-detail.component';
+import { MovieSearchComponent } from './moviesDb/movie-component/movie-search/movie-search.component';
+import { MovieModule } from './moviesDb/movie-component/movie.module';
 
 
 @NgModule({
@@ -45,12 +47,15 @@ import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/mo
     ProductComponent,
     ProductsComponent,
     MainServiceComponent,
-    MainMoviesDbComponent,
-    MoviesDbNavBarComponent,
-    MoviesDbPageLandingComponent,
-    MoviesComponent,
-    MovieComponent,
-    FooterComponent,
+    
+    // MoviesDbNavBarComponent,
+    // MoviesDbPageLandingComponent,
+    // MoviesComponent,
+    // MovieComponent,
+    // MovieDetailComponent,
+    // MovieSearchComponent,
+    
+    
     HomeComponent,
     AboutComponent,
     TodoListComponent,
@@ -61,7 +66,7 @@ import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/mo
     ChildRouterOutledComponent,
     ChildRouterOutledChild1Component,
     ChildRouterOutledChild2Component,
-    MovieDetailComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -70,6 +75,7 @@ import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/mo
     ,TodoModule
     ,CoreModule
     ,FormsModule
+    ,MovieModule
   ],
   providers: [
     {provide:TodoService,
