@@ -36,6 +36,8 @@ import { ChildRouterOutledChild2Component } from './todoDb/component/child-route
 import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/movie-detail.component';
 import { MovieSearchComponent } from './moviesDb/movie-component/movie-search/movie-search.component';
 import { MovieModule } from './moviesDb/movie-component/movie.module';
+import { HiLightDirective } from './directiveLearnging/hi-light.directive';
+import { LearningDirectiveComponent } from './directiveLearnging/component/learning-directive/learning-directive.component';
 
 
 @NgModule({
@@ -66,6 +68,9 @@ import { MovieModule } from './moviesDb/movie-component/movie.module';
     ChildRouterOutledComponent,
     ChildRouterOutledChild1Component,
     ChildRouterOutledChild2Component,
+    HiLightDirective,
+    LearningDirectiveComponent,
+    LearningDirectiveComponent,
     
   ],
   imports: [

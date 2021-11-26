@@ -1,0 +1,26 @@
+
+<div class="container h-100 d-flex justify-content-center">
+    <div class="jumbotron my-auto">
+
+        <!--Explain :
+        [value]=0 vs value=0
+        [value] is binding later, after constructor
+        
+        -->
+
+        <input #inputCurVal type="number" [value]="curentVal" (change)="clickHandler($event)">
+
+        <!--
+        Explain: if directive has input
+            <div [appHiLight]="false"></div>
+        but if there isn't input
+        <div appHiLight ></div>
+        -->
+    
+    
+        <div appHiLight [curVal]='curentVal' [indexxx]="1">1</div>
+        <div appHiLight [curVal]='curentVal' [indexxx]="2">2</div>
+
+    </div>
+</div>
+

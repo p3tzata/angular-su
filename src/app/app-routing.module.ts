@@ -18,10 +18,17 @@ import {MainMoviesDbComponent} from "./moviesDb/movie-component/main-movies-db/m
 import { MovieDetailComponent } from './moviesDb/movie-component/movie-detail/movie-detail.component';
 import { MovieDetailResolver } from './moviesDb/movies-resolver/movie-detail.resolver';
 import { MovieSearchComponent } from './moviesDb/movie-component/movie-search/movie-search.component';
+import {LearningDirectiveComponent} from './directiveLearnging/component/learning-directive/learning-directive.component'
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
 
 const routes: Routes = [
+  
+  {path: 'learningDirective', component: LearningDirectiveComponent},
+  
+  
+  
+  
   {path: 'movieDb',
    
    
