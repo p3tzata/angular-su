@@ -38,6 +38,7 @@ import { MovieSearchComponent } from './moviesDb/movie-component/movie-search/mo
 import { MovieModule } from './moviesDb/movie-component/movie.module';
 import { HiLightDirective } from './directiveLearnging/hi-light.directive';
 import { LearningDirectiveComponent } from './directiveLearnging/component/learning-directive/learning-directive.component';
+import { FormTDComponent } from './formTemplateDrivenLearning/form-td/form-td.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { LearningDirectiveComponent } from './directiveLearnging/component/learn
     HiLightDirective,
     LearningDirectiveComponent,
     LearningDirectiveComponent,
+    FormTDComponent,
     
   ],
   imports: [

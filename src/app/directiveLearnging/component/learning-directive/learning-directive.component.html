@@ -8,18 +8,23 @@
         
         -->
 
-        <input #inputCurVal type="number" [value]="curentVal" (change)="clickHandler($event)">
+        <input #inputCurVal min=0 max=3 type="number" [value]="curentVal" (change)="clickHandler($event)">
 
         <!--
         Explain: if directive has input
-            <div [appHiLight]="false"></div>
+            <div appHiLight [inputVal]="false"></div>
         but if there isn't input
         <div appHiLight ></div>
         -->
     
     
-        <div appHiLight [curVal]='curentVal' [indexxx]="1">1</div>
-        <div appHiLight [curVal]='curentVal' [indexxx]="2">2</div>
+        <div #elOne="appHiLightExport" appHiLight [curVal]='curentVal' [indexxx]="1">1</div>
+        <div #elTwo="appHiLightExport" appHiLight [curVal]='curentVal' [indexxx]="2">2</div>
+        <div>
+           One {{elOne.fontColor}}
+           <br>
+           Two {{elTwo.fontColor}}
+        </div>
 
     </div>
 </div>

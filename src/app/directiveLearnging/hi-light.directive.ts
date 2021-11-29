@@ -1,7 +1,8 @@
-import { Directive, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 
 @Directive({
-  selector: '[appHiLight]'
+  selector: '[appHiLight]',
+  exportAs: 'appHiLightExport'
 })
 export class HiLightDirective implements OnChanges{
 
@@ -11,32 +12,48 @@ export class HiLightDirective implements OnChanges{
  @Input()
  indexxx:number;
 
-  constructor(private render: Renderer2, private el: ElementRef) { 
+  fontColor: string="";
+
+
+ constructor(private render: Renderer2, private el: ElementRef) { 
     this.curVal=0;
     this.indexxx=0;
     console.log(el);
   }
 
-  bold(){
-    if(this.indexxx!=this.curVal) {
-      this.render.setStyle(this.el.nativeElement,"font-weight","normal")
-      this.render.setStyle(this.el.nativeElement,"color","black")
-      
+  ngOnChanges(changes: SimpleChanges): void {
+    this.bold();
+     console.log(changes);
+   }
 
-      return;
-    } else {
-      this.render.setStyle(this.el.nativeElement,"color","red")
-      this.render.setStyle(this.el.nativeElement,"font-weight","bold") 
-      
-    }
+   //Explain: this is default behavior of DOM element which we are bond.
+   @HostBinding('style.color')
+   color="green"; 
+
+   @HostListener('mouseover',["$event"]) 
+   mouseOverHandler($event:any):any {
+      //console.log($event)
+      this.render.setStyle(this.el.nativeElement,"font-weight","bold");
+   }
+
+   @HostListener('mouseout',["$event"]) 
+   mouseOutHandler($event:any):any {
+      //console.log($event)
+      this.render.setStyle(this.el.nativeElement,"font-weight","normal");
+   }
+
+
+  bold(){
+
+    const colorStyle = (this.indexxx!=this.curVal) ?  "black" : "red" ;
+    this.fontColor=colorStyle;
+    this.render.setStyle(this.el.nativeElement,"color",colorStyle);
+
     
   }
 
 
-  ngOnChanges(changes: SimpleChanges): void {
-   this.bold();
-    console.log(changes);
-  }
+  
 
 
   
