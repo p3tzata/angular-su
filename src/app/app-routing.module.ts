@@ -20,6 +20,7 @@ import { MovieDetailResolver } from './moviesDb/movies-resolver/movie-detail.res
 import { MovieSearchComponent } from './moviesDb/movie-component/movie-search/movie-search.component';
 import {LearningDirectiveComponent} from './directiveLearnging/component/learning-directive/learning-directive.component'
 import {FormTDComponent} from './formTemplateDrivenLearning/form-td/form-td.component'
+import {FormRComponent} from './formReactiveLearning/form-r/form-r.component'
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
 
@@ -27,8 +28,7 @@ const routes: Routes = [
   
   {path: 'learningDirective', component: LearningDirectiveComponent},
   {path: 'form-td', component: FormTDComponent},
-  
-  
+  {path: 'form-r', component: FormRComponent},
   
   
   {path: 'movieDb',

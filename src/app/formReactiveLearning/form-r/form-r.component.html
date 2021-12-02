@@ -1,0 +1,41 @@
+<div class="container h-100 d-flex justify-content-center">
+    <div class="jumbotron my-auto">
+
+<h3>This is Reactive form</h3>
+<form [formGroup]="form">
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" [formControl]="$any(form).get('email')" />  Error in email: {{getEmail.errors | json}}
+   <div *ngIf="form.get('email')!.invalid && form.get('email')!.touched" class="bg-danger"> Error in email</div>
+
+    
+</div>
+
+<div class="form-group">
+    <label for="uuid">Uuid</label>
+    <input type="uuid" [formControl]="$any(form).get('uuid')" /> {{ $any(form).get('uuid').errors | json }} 
+   <div *ngIf="form.get('uuid')!.invalid && form.get('uuid')!.touched" class="bg-danger"> Error in uuid</div>
+
+    
+</div>
+
+
+
+<div class="form-group">
+    <label for="email">Email test</label>
+    
+    <input type="email" formControlName="email" /> 
+
+    
+</div>
+
+</form>
+
+<br>
+<br>
+<app-form-r-fb-service></app-form-r-fb-service>
+
+
+
+</div>
+</div>

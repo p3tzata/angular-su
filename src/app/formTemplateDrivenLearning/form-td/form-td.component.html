@@ -1,11 +1,20 @@
 
 <div class="container h-100 d-flex justify-content-center">
     <div class="jumbotron my-auto">
+        <h3>This is template driven form</h3>
         <!-- Explain define template var to refer object of type ngForm -->
         <form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm.value)" >
+            
+            <div class="form-group">
+                <label for="uuid">uuid</label>
+                <input #uuidModel="ngModel" ngModel appUuidValidator name="uuid" type="text" required/> Errors on UUID: {{uuidModel.errors | json}}
+                <div *ngIf="uuidModel.touched && uuidModel.invalid" class="bg-danger text-white">uuid is required</div>
+            </div>
+            
+            
             <div class="form-group">
                 <label for="email">Email</label>
-                <input #emailModel="ngModel" ngModel name="email" type="email" required/>
+                <input #emailModel="ngModel" ngModel name="email" type="email" required/> Errors on Email: {{emailModel.errors | json}}
                 <div *ngIf="emailModel.touched && emailModel.invalid" class="bg-danger text-white">Email is required</div>
             </div>
 
@@ -16,12 +25,17 @@
             </div>
             <button [disabled]='loginForm.invalid'  type="submit">Login</button>
         </form>
+        
         {{loginForm.value| json}}
         <div class="form-group">
+        <br><br>
+        <input [(ngModel)]="testVal"> testVal: {{testVal}}<br>
+       
 
-        <input [(ngModel)]="testVal">
-        {{testVal}}
+        
+
+           
         </div>
-
+         
     </div>
 </div>

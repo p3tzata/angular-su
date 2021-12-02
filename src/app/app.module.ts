@@ -25,7 +25,7 @@ import { AboutComponent } from './todoDb/component/about/about.component';
 import { CoreModule } from './core/core.module';
 import { TodoListComponent } from './todoDb/component/todo-list/todo-list.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { TodoDetailComponent } from './todoDb/component/todo-detail/todo-detail.component';
 import { TodoList1Component } from './todoDb/component/todo-list1/todo-list1.component';
 import { TodoList2Component } from './todoDb/component/todo-list2/todo-list2.component';
@@ -39,6 +39,9 @@ import { MovieModule } from './moviesDb/movie-component/movie.module';
 import { HiLightDirective } from './directiveLearnging/hi-light.directive';
 import { LearningDirectiveComponent } from './directiveLearnging/component/learning-directive/learning-directive.component';
 import { FormTDComponent } from './formTemplateDrivenLearning/form-td/form-td.component';
+import { UuidValidatorDirective } from './formTemplateDrivenLearning/uuid-validator.directive';
+import { FormRComponent } from './formReactiveLearning/form-r/form-r.component';
+import { FormRFbServiceComponent } from './formReactiveLearning/form-r-fb-service/form-r-fb-service.component';
 
 
 @NgModule({
@@ -73,6 +76,9 @@ import { FormTDComponent } from './formTemplateDrivenLearning/form-td/form-td.co
     LearningDirectiveComponent,
     LearningDirectiveComponent,
     FormTDComponent,
+    UuidValidatorDirective,
+    FormRComponent,
+    FormRFbServiceComponent,
     
   ],
   imports: [
@@ -82,6 +88,7 @@ import { FormTDComponent } from './formTemplateDrivenLearning/form-td/form-td.co
     ,TodoModule
     ,CoreModule
     ,FormsModule
+    ,ReactiveFormsModule
     ,MovieModule
   ],
   providers: [
