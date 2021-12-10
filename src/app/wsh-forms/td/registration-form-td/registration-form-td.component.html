@@ -1,0 +1,213 @@
+<p>tregistration-form-td works!</p>
+
+<div class="container">
+    
+<form #form="ngForm"  class="row" (ngSubmit)="register(form)">
+
+      <pre>{{$any(form.controls.imgUrl)?.errors | json}}</pre>
+
+      <label for="fullName" class="form-label">Full name</label>
+      <div class="form-group input-group">
+      <input type="text" [ngClass]="{'form-control':true, 
+      'is-invalid' : form.controls.fullname?.errors !== null && form.controls.fullname.touched,
+       'is-valid' : form.controls.fullname?.errors == null
+       }" 
+       aria-describedby="fullnameValidationFeedback"       
+       pattern="[A-Z][a-z]+\s[A-Z][a-z]+"
+       #fullname="ngModel" ngModel name="fullname" id="fullname" value="" required>
+      
+      <div id="fullnameValidationFeedback" class="invalid-feedback" >
+       <ng-template [ngIf]="fullname?.errors?.required && form.controls.fullname.touched"> 
+            This field is required
+       </ng-template>
+
+       <ng-template [ngIf]="form.controls.fullname?.errors?.pattern && form.controls.fullname.touched"> 
+        This field mast be in format: Name Lastname
+        </ng-template>
+      
+    </div>
+</div>
+   
+
+      <label for="email" class="form-label">Email</label>
+           <div class="form-group input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> <fa-icon [icon]="faEnvelope"></fa-icon> </span>
+              </div>
+
+
+            
+      <input type="email" [ngClass]="{'form-control':true, 
+      'is-invalid' : form.controls.email?.errors !== null && form.controls.email.touched,
+       'is-valid' : form.controls.email?.errors == null
+       }"  name="email" id="email" value="" 
+       aria-describedby="emailValidationFeedback"
+       ngModel  email required>
+      
+
+       <div id="emailValidationFeedback" class="invalid-feedback" >
+        
+        <ng-template [ngIf]="form.controls.email?.errors?.required && form.controls.email.touched"> 
+             This field is required
+        </ng-template>
+ 
+        <ng-template [ngIf]="form.controls.email?.errors?.email && form.controls.email.touched"> 
+         This field mast be valid email
+         </ng-template>
+       
+     </div>
+</div>
+
+
+
+      <label for="phoneSelect" class="form-label">Phone</label>
+      <div class="form-group input-group">
+        
+        <select [ngClass]="{'form-select':true, 
+        'is-invalid' : form.controls.phoneSelect?.errors !== null && (form.controls.phoneSelect.touched || form.controls.phoneInput.touched),
+         'is-valid' : form.controls.phoneSelect?.errors == null
+         }"
+        
+        style="max-width: 120px;" name="phoneSelect"
+        aria-describedby="phoneInputValidationFeedback"
+        required ngModel>
+           <option disabled selected>Choose: </option>
+
+
+          <option *ngFor="let phone of phones" [value]="phone.id">{{phone.phoneNumber}}</option>
+      
+        </select>
+        <input [ngClass]="{'form-control':true, 
+        'is-invalid' : form.controls.phoneInput?.errors !== null && form.controls.phoneInput.touched,
+         'is-valid' : form.controls.phoneInput?.errors == null && form.controls.phoneSelect?.errors==null
+         }" placeholder="Phone number" type="text" name="phoneInput" id="phoneInput" aria-describedby="phoneInputValidationFeedback" ngModel required pattern="[0-9]{9}">
+      
+         <div id="phoneInputValidationFeedback" class="invalid-feedback" >
+          
+            <ng-template [ngIf]="form.controls.phoneInput?.errors?.required && form.controls.phoneInput.touched"> 
+                 <p>This field is required</p>
+            </ng-template>
+     
+            <ng-template [ngIf]="form.controls.phoneInput?.errors?.pattern && form.controls.phoneInput.touched"> 
+             <p>This field mast has 9 digits</p>
+             </ng-template>
+
+             <ng-template [ngIf]="form.controls.phoneSelect?.errors?.required && form.controls.phoneInput.touched"> 
+               <p> Must select from dropdown</p>
+              </ng-template>
+
+           
+         </div>
+      
+        </div>
+      
+
+
+
+      <label for="employeeType" class="form-label">Employee Type</label>
+      <div class="form-group input-group">
+      <select  [ngClass]="{'form-select':true, 
+      'is-invalid' : form.controls.employeeType?.errors !== null && form.controls.employeeType.touched,
+       'is-valid' : form.controls.employeeType?.errors == null
+       }" name="employeeType" aria-describedby="employeeTypeFeedback" required ngModel>
+        <option selected disabled value="">Choose...</option>
+        <option *ngFor="let employeeType of employeeTypes" [value]="employeeType.id">{{employeeType.employeeType}}</option>
+      </select>
+      <div id="employeeTypeFeedback" class="invalid-feedback">
+        <ng-template [ngIf]="form.controls.employeeType?.errors?.required && form.controls.employeeType.touched"> 
+            <p> Must select from dropdown</p>
+           </ng-template>
+      </div>
+      </div>
+
+
+      <label for="imgUrl" class="form-label">Image Url</label>
+      <div class="form-group input-group">
+        <input appUrlValidator type="text" [ngClass]="{'form-control':true, 
+        'is-invalid' : form.controls.imgUrl?.errors !== null && form.controls.imgUrl.touched,
+         'is-valid' : form.controls.imgUrl?.errors == null
+         }" name="imgUrl"  value="" ngModel required>
+
+         <div  class="invalid-feedback">
+        
+            <ng-template [ngIf]="form.controls.imgUrl?.errors?.required && form.controls.imgUrl.touched"> 
+                <p>This field is required</p>
+           </ng-template>
+    
+           <ng-template [ngIf]="form.controls.imgUrl?.errors?.url && form.controls.imgUrl.touched"> 
+            <p>This field mast start with http:// or https:// and end with .png or .jpg</p>
+            </ng-template>
+          </div>
+
+      </div>
+      
+      
+      <div ngModelGroup="passwords">
+      <label for="password" class="form-label">Password</label>
+      <div class="form-group input-group">
+        <input type="password" [ngClass]="{'form-control':true, 
+        'is-invalid' : ($any(form.controls.passwords)?.controls.password.errors !== null && $any(form.controls.passwords)?.controls.password.touched) ,
+         'is-valid' : $any(form.controls.passwords)?.controls.password.errors == null
+         }" name="password"  
+         pattern="^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]{6,16})$"
+         value="" ngModel required>
+
+         <div  class="invalid-feedback">
+            <ng-template [ngIf]="$any(form.controls.passwords)?.controls.password.errors?.required && $any(form.controls.passwords)?.controls.password.touched"> 
+                <p> This field is required</p>
+            </ng-template>
+
+            <ng-template [ngIf]="$any(form.controls.passwords)?.controls.password.errors?.pattern&& $any(form.controls.passwords)?.controls.password.touched"> 
+                <p> Password must have 6 to 16 chars and numbers</p>
+            </ng-template>
+
+
+
+          </div>
+
+      </div>
+
+
+      
+
+      <label for="repeatPassword" class="form-label">Repeat Password</label>
+      <div class="form-group input-group">
+        <input type="password" [ngClass]="{'form-control':true, 
+        'is-invalid' : ($any(form.controls.passwords)?.controls.passwordConfirm.errors !== null || 
+        $any(form.controls.passwords)?.controls.password.value!=$any(form.controls.passwords)?.controls.passwordConfirm.value ) && $any(form.controls.passwords)?.controls.passwordConfirm.touched,
+         'is-valid' : $any(form.controls.passwords)?.controls.passwordConfirm.errors == null && 
+         $any(form.controls.passwords)?.controls.password.value==$any(form.controls.passwords)?.controls.passwordConfirm.value
+         }" name="passwordConfirm"  value="" ngModel required>
+
+         <div  class="invalid-feedback">
+            <ng-template [ngIf]="$any(form.controls.passwords)?.controls.passwordConfirm.errors?.required && $any(form.controls.passwords)?.controls.passwordConfirm.touched"> 
+                <p> This field is required</p>
+            </ng-template>
+
+            <ng-template [ngIf]="$any(form.controls.passwords)?.controls.password.value!=$any(form.controls.passwords)?.controls.passwordConfirm.value && $any(form.controls.passwords)?.controls.passwordConfirm.touched"> 
+                <p> Passwords are mismatch</p>
+            </ng-template>
+
+          </div>
+
+      </div>
+
+
+
+      </div>
+
+
+
+
+
+
+
+
+
+    
+      <div class="form-group input-group">
+      <button [disabled]="form.invalid || $any(form.controls.passwords)?.controls.password.value!=$any(form.controls.passwords)?.controls.passwordConfirm.value " class="btn btn-primary" type="submit">Submit form</button>
+    </div>
+
+  </form>
+  </div>

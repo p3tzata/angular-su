@@ -42,6 +42,9 @@ import { FormTDComponent } from './formTemplateDrivenLearning/form-td/form-td.co
 import { UuidValidatorDirective } from './formTemplateDrivenLearning/uuid-validator.directive';
 import { FormRComponent } from './formReactiveLearning/form-r/form-r.component';
 import { FormRFbServiceComponent } from './formReactiveLearning/form-r-fb-service/form-r-fb-service.component';
+import { WshFormModule} from './wsh-forms/wsh-form.module'
+import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
+
 
 
 @NgModule({
@@ -79,17 +82,19 @@ import { FormRFbServiceComponent } from './formReactiveLearning/form-r-fb-servic
     UuidValidatorDirective,
     FormRComponent,
     FormRFbServiceComponent,
+
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
-    ,TodoModule
-    ,CoreModule
-    ,FormsModule
-    ,ReactiveFormsModule
-    ,MovieModule
+    HttpClientModule,
+    TodoModule,
+    CoreModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MovieModule,
+    
   ],
   providers: [
     {provide:TodoService,

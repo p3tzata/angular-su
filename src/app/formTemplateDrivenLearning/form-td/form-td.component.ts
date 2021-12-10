@@ -1,4 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, NgModule, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -9,6 +10,8 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 export class FormTDComponent implements OnInit {
   //Explain: Template driven form is suitable for small forms without complex logic
   
+  @ViewChild('loginForm', {read : NgForm}) form!: NgForm;
+
   testVal:string="init val"
   constructor() { }
   
@@ -16,6 +19,9 @@ export class FormTDComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.form.valueChanges!.subscribe(console.log);
+  }
   
 
   submitHandler(values: any){

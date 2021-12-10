@@ -21,6 +21,8 @@ import { MovieSearchComponent } from './moviesDb/movie-component/movie-search/mo
 import {LearningDirectiveComponent} from './directiveLearnging/component/learning-directive/learning-directive.component'
 import {FormTDComponent} from './formTemplateDrivenLearning/form-td/form-td.component'
 import {FormRComponent} from './formReactiveLearning/form-r/form-r.component'
+import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
+
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
 
@@ -32,14 +34,16 @@ const routes: Routes = [
   
   
   {path: 'movieDb',
-   
-   
    children: [
     {path: '', pathMatch:"full" ,component: MainMoviesDbComponent}, 
     {path: 'detail/:id', component: MovieDetailComponent, resolve: {detailResolve: MovieDetailResolver}},
      {path: 'search/:queryString', component: MovieSearchComponent}
    ]
-  },
+  }, 
+
+  
+
+
   {path: '',
    pathMatch: "full",
   redirectTo: "home"
@@ -99,7 +103,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),WshFormRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

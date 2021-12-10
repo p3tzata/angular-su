@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import uuidValidatorFn from '../../formTemplateDrivenLearning/uuid-validator-fn';
+import {throttleTime} from 'rxjs/operators'
 
 @Component({
   selector: 'app-form-r-fb-service',
@@ -16,12 +17,18 @@ export class FormRFbServiceComponent implements OnInit {
   countAddresses=2;
 
   incAddreses(){
+    const currentForm = this.form;
     this.countAddresses++;
     this.buildForm();
+    //Explain: we use patch when merge old state of form and some modification
+    this.form.patchValue(currentForm);
+    
+
   }
 
   constructor(private fb:FormBuilder) {
     this.buildForm();
+    this.form.valueChanges.pipe(throttleTime(1500)).subscribe(console.log);
     
    }
 

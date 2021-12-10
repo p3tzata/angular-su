@@ -28,8 +28,8 @@
     <br><br><br><br>
 
     <div formArrayName="addresses" *ngFor="let address of $any(form).get('addresses').controls; let i=index">
-
-    
+        <fieldset>
+            <legend>Address:</legend>
 
         <div [formGroupName]="i">
             <div class="form-group">
@@ -41,25 +41,12 @@
          </div>
 
 
-    
+        </fieldset>
     </div>
     <br>
     <button type="button" (click)="putAddressControl()">Add address</button> - 
     <button type="button" (click)="removeAddressControl()">Remove address</button>
-
-<!--
-    <div *ngFor="let ctrl of $any(form).get('addresses').controls; let i=index">
-        <div class="form-group">
-            <label for="street-{{ i }}">Street:</label>
-            <input id="street-{{ i }}" type="text" [formControlName]="i"> {{i}}
-        </div>
-        <div class="form-group">
-            <label for="zip-{{ i }}">Zip:</label>
-            <input id="zip-{{ i }}" type="text" [formControlName]="i">
-        </div>
-        <br>
-    </div>
-
--->
+    <br>
+    {{form.value | json}}
 
     </form>
