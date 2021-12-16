@@ -22,11 +22,20 @@ import {LearningDirectiveComponent} from './directiveLearnging/component/learnin
 import {FormTDComponent} from './formTemplateDrivenLearning/form-td/form-td.component'
 import {FormRComponent} from './formReactiveLearning/form-r/form-r.component'
 import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
+import {PipeLearningComponent} from './pipeAuthInterc/pipe-learning/pipe-learning.component'
+
 
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
 
 const routes: Routes = [
+  
+  
+  
+  {
+    path: 'pipeLearning' , component: PipeLearningComponent
+  },
+  
   
   {path: 'learningDirective', component: LearningDirectiveComponent},
   {path: 'form-td', component: FormTDComponent},
@@ -96,9 +105,12 @@ const routes: Routes = [
     outlet:'childRouterOutlet'}
   ]
   }, 
-  {path: "**",
-  component: NotfoundComponent}
+
   
+  {path: "**",
+  component: NotfoundComponent},
+  
+
 
 ];
 

@@ -20,7 +20,8 @@ export class MovieDetailResolver implements Resolve<any> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
    
-   
+    //Explain: We to be in save if some of observable won't complete, 
+    //we have to use .pipe(take(1),first( (users,posts)=> !!users && !!posts ) )
     
     return forkJoin( {first: this.srv.getMovieById(route.params.id),
                       second: this.srv.getMovieById(route.params.id)});

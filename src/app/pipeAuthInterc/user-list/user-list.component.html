@@ -1,0 +1,10 @@
+<h3>Learning Async</h3>
+
+
+<ul>
+    <li *ngFor="let user of users;let i=index">
+        Username {{user.userName}} , posts count: {{posts | postCountPure : user.userId : i }} (with pure pipe)
+
+    </li>
+
+</ul>

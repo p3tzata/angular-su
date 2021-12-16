@@ -1,0 +1,67 @@
+
+
+
+<div class="d-flex justify-content-center">
+    <div class="row">
+
+        <div class="col-12">
+
+            <p>Date: {{date_ | date : 'dd.MM.yyyy'}}</p>
+            <p>Object: {{someObj | json}}</p>
+
+            <ul>
+                <li *ngFor="let user of users">
+                    Username {{user.username}} , posts count: {{countPostsOfUser(user.userId)}} (with component method)
+
+                </li>
+
+            </ul>
+
+
+            <ul>
+                <li *ngFor="let user of users">
+                    Username {{user.username}} , posts count: {{posts | postCount : user.userId}} (with NO pure pipe)
+
+                </li>
+            </ul>
+
+
+            <ul>
+                <li *ngFor="let user of users;let i = index">
+                    Username {{user.username}} , posts count: {{posts | postCountPure : user.userId : i }} (with pure pipe)
+
+                </li>
+            </ul>
+
+            <button (click)="clickHandlerWithoutChangeRef()">Add post [without change ref]</button> - 
+            <button (click)="clickHandlerWithChangeRef()">Add post [with change ref]</button>
+
+        </div>
+        
+        <!--Explain: when async is used, there is no need of unsubscriпtion, async is a goot practic-->
+        <ng-container *ngIf="{ users: (users$ | async), posts: (posts$ | async) } as objs"> 
+            <ng-container *ngIf="objs.users as users; else loading">
+                <ng-container *ngIf="objs.posts as posts; else loading">
+
+                    <app-user-list  [users]="users" [posts]="posts"> </app-user-list>
+
+                </ng-container>
+            </ng-container>
+        </ng-container>
+
+
+        <app-user-list *ngIf="zipped.users" [users]="zipped.users" [posts]="zipped.posts"> </app-user-list>
+        
+
+
+
+        <ng-template #loading>
+            
+            <div class="blink_me">Loading...</div> 
+           
+
+        </ng-template>
+
+    </div>
+
+</div>

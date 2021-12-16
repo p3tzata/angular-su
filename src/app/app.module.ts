@@ -44,6 +44,11 @@ import { FormRComponent } from './formReactiveLearning/form-r/form-r.component';
 import { FormRFbServiceComponent } from './formReactiveLearning/form-r-fb-service/form-r-fb-service.component';
 import { WshFormModule} from './wsh-forms/wsh-form.module'
 import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
+import { PipeLearningComponent } from './pipeAuthInterc/pipe-learning/pipe-learning.component';
+import { PostCountPipe } from './pipeAuthInterc/post-count.pipe';
+import { PostCountPurePipe } from './pipeAuthInterc/post-count-pure.pipe';
+import { UserListComponent } from './pipeAuthInterc/user-list/user-list.component';
+
 
 
 
@@ -82,6 +87,10 @@ import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
     UuidValidatorDirective,
     FormRComponent,
     FormRFbServiceComponent,
+    PipeLearningComponent,
+    PostCountPipe,
+    PostCountPurePipe,
+    UserListComponent,
 
     
   ],
