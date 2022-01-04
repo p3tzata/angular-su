@@ -1,11 +1,11 @@
 
 
 
-<div class="d-flex justify-content-center">
+<div class="container">
     <div class="row">
 
-        <div class="col-12">
-
+        <div class="col">
+            <h1>Pipes</h1>
             <p>Date: {{date_ | date : 'dd.MM.yyyy'}}</p>
             <p>Object: {{someObj | json}}</p>
 
@@ -36,7 +36,7 @@
             <button (click)="clickHandlerWithoutChangeRef()">Add post [without change ref]</button> - 
             <button (click)="clickHandlerWithChangeRef()">Add post [with change ref]</button>
 
-        </div>
+       
         
         <!--Explain: when async is used, there is no need of unsubscriпtion, async is a goot practic-->
         <ng-container *ngIf="{ users: (users$ | async), posts: (posts$ | async) } as objs"> 
@@ -61,6 +61,19 @@
            
 
         </ng-template>
+
+        
+
+    </div>
+    <div class="col">
+        <h1>Interceptors</h1>
+        <button (click)="testInterceptorHndlr()">Test interceptor [look in console]</button>
+        <br/>
+        <button (click)="signUpHndlr()">SignUp [admin:123456]</button>
+        <button (click)="signInHndlr()">SignIn [admin:123456]</button>
+        <button (click)="dashboardHndlr()">DashBoard [sensitive info]</button>
+
+    </div>
 
     </div>
 

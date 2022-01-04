@@ -6,7 +6,9 @@ import { User } from '../../interfaces/user';
 import {UserService} from "../user.service"
 import {PostService} from "../post.service"
 import { takeUntil } from 'rxjs/operators';
-
+import { MovieService } from '../../moviesDb/movies-services/movie.service';
+import { AuthService } from '../auth.service';
+import {Router} from '@angular/router'
 
 
 @Component({
@@ -48,13 +50,17 @@ export class PipeLearningComponent implements OnInit {
 
 
 
-  constructor(postService: PostService,userService: UserService) { 
+  constructor(private movieSrv: MovieService, 
+    private postService: PostService,
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router) { 
     
     this.users$=userService.getUsers();
     this.posts$=postService.getPost();
     
     //Explain: this have to be used, when async is imposible to be used.
-    zip(userService.getUsers(),postService.getPost())
+    zip(this.userService.getUsers(),this.postService.getPost())
     .pipe(takeUntil(this.isAlive$))
     .subscribe( ([users,posts]) => {
       this.zipped["users"]=users, this.zipped["posts"]=posts;
@@ -97,6 +103,35 @@ export class PipeLearningComponent implements OnInit {
     this.isAlive$.next();
     this.isAlive$.complete();
   }
+
+
+  testInterceptorHndlr(){
+    this.movieSrv.getPopularMovies().subscribe(el => console.log(el));
+  }
+
+  signUpHndlr(){
+    this.authService.singUp("admin","123456")
+    .subscribe(data => {
+      //this.router.navigate(['/login']);
+      console.log(data)
+    }, err => console.error(err));
+  }
+
+  signInHndlr() {
+
+    this.authService.singIn("admin","123456")
+    .subscribe( data => {
+      localStorage.setItem("token",data.token);
+      
+    }, err => console.error(err))
+
+  }
+
+  dashboardHndlr(){
+    this.userService.getDashBoard().subscribe(data => console.log(data));
+  }
+
+
 
 
 }

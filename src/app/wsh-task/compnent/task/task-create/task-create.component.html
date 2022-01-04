@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row space-top">
+        <div class="col-md-12">
+            <h1>Create New Task</h1>
+            <p>Please fill all fields.</p>
+        </div>
+    </div>
+    <!---->
+    {{form.controls.make.errors| json}}
+    <form [formGroup]="form" >
+        <div class="row space-top">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="new-make">Make</label>
+                    <input [ngClass]="{'form-control':true, 
+                    'is-invalid' : fc.make?.errors !== null && fc.make.touched,
+                    'is-valid' : fc.make?.errors == null
+                    }" formControlName="make" id="new-make" type="text">
+                    <div id="fullnameValidationFeedback" class="invalid-feedback" >
+                        <ng-template [ngIf]="fc.make?.errors?.required && fc.make.touched"> 
+                             This field is required
+                        </ng-template>
+
+                        <ng-template [ngIf]="fc.make?.errors?.minlength && fc.make.touched"> 
+                            This field is must be min lenght of {{fc.make?.errors?.minlength.requiredLength}} chars.
+                       </ng-template>
+
+                     </div>
+                
+                </div>
+
+                
+                <div class="form-group">
+                    <label class="form-control-label" for="new-model">Model</label>
+                    <input class="form-control" formControlName="model" id="new-model" type="text">
+                    
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-year">Year</label>
+                    <input class="form-control" formControlName="year" id="new-year" type="number">
+                    
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-description">Description</label>
+                    <input class="form-control" formControlName="description" id="new-description" type="text">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="form-control-label" for="new-price">Price</label>
+                    <input class="form-control" formControlName="price" id="new-price" type="number">
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-image">Image</label>
+                    <input class="form-control" formControlName="image" id="new-image" type="text">
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="new-material">Material (optional)</label>
+                    <input class="form-control" formControlName="material" id="new-material" type="text">
+                </div>
+                <input type="submit" (click)="submitHandler(false)" [disabled]="form.invalid" class="btn btn-primary" value="Create" /> - 
+                <input type="submit" (click)="submitHandler(true)" [disabled]="form.invalid" class="btn btn-primary" value="Create & Close" />
+            </div>
+        </div>
+    </form>
+  
+</div>
+

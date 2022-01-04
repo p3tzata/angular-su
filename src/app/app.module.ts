@@ -48,6 +48,8 @@ import { PipeLearningComponent } from './pipeAuthInterc/pipe-learning/pipe-learn
 import { PostCountPipe } from './pipeAuthInterc/post-count.pipe';
 import { PostCountPurePipe } from './pipeAuthInterc/post-count-pure.pipe';
 import { UserListComponent } from './pipeAuthInterc/user-list/user-list.component';
+import { httpInterceptorProviders } from './pipeAuthInterc/innterceptior/interceptor.barrel';
+import {TaskModule} from './wsh-task/task.module'
 
 
 
@@ -92,6 +94,7 @@ import { UserListComponent } from './pipeAuthInterc/user-list/user-list.componen
     PostCountPurePipe,
     UserListComponent,
 
+
     
   ],
   imports: [
@@ -103,11 +106,13 @@ import { UserListComponent } from './pipeAuthInterc/user-list/user-list.componen
     FormsModule,
     ReactiveFormsModule,
     MovieModule,
+    TaskModule,
     
   ],
   providers: [
     {provide:TodoService,
-    useClass:TodoService} //This is not necessary when provideIn is used.
+    useClass:TodoService}, //This is not necessary when provideIn is used.
+   // httpInterceptorProviders,
   ],
   bootstrap: [AppComponent]
 })

@@ -22,6 +22,7 @@ import {LearningDirectiveComponent} from './directiveLearnging/component/learnin
 import {FormTDComponent} from './formTemplateDrivenLearning/form-td/form-td.component'
 import {FormRComponent} from './formReactiveLearning/form-r/form-r.component'
 import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
+import {TaskRoutingModule } from './wsh-task/task-routing.module'
 import {PipeLearningComponent} from './pipeAuthInterc/pipe-learning/pipe-learning.component'
 
 
@@ -115,7 +116,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),WshFormRoutingModule],
+  imports: [RouterModule.forRoot(routes),TaskRoutingModule,WshFormRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
