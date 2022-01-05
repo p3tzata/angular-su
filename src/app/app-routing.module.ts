@@ -106,7 +106,8 @@ const routes: Routes = [
     outlet:'childRouterOutlet'}
   ]
   }, 
-
+  
+  {path: 'task', loadChildren: '() => import ("./wsh-task/task-routing.module").then(m => m.TaskRoutingModule)'},
   
   {path: "**",
   component: NotfoundComponent},
@@ -116,7 +117,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),TaskRoutingModule,WshFormRoutingModule],
+  //imports: [RouterModule.forRoot(routes),TaskRoutingModule,WshFormRoutingModule],
+  imports: [RouterModule.forRoot(routes),WshFormRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

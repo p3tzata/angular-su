@@ -12,7 +12,7 @@ import {SignupComponent} from './compnent/signup/signup.component'
 import { RouterModule } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { ToastrModule } from 'ngx-toastr';
-import {wshTaskInterceptorProviders} from './service/interceptor/interceptor.barrer';
+import {wshTaskInterceptorProviders} from './service/interceptor/interceptor.barrel';
 import { TaskAllComponent } from './compnent/task/task-all/task-all.component';
 import { TaskUserComponent } from './compnent/task/task-user/task-user.component';
 import { TaskDetailComponent } from './compnent/task/task-detail/task-detail.component';
@@ -41,7 +41,8 @@ import { TaskCreateComponent } from './compnent/task/task-create/task-create.com
     ReactiveFormsModule,
     RouterModule,
     BrowserAnimationsModule,
-    ToastrModule
+    ToastrModule.forRoot(),
+    TaskRoutingModule
   ], 
   providers: [
     wshTaskInterceptorProviders

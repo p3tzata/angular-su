@@ -18,7 +18,11 @@ export class TaskUserComponent implements OnInit {
   }
   
   deleteTask(_id:string) {
-    this.taskService.deleteTask(_id).subscribe();
+    this.taskService.deleteTask(_id).subscribe( x=> 
+      //This is bad 
+      this.allTasks$=this.taskService.getAllTaskByUser()
+    );
+    
   }
 
 }
