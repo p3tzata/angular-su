@@ -10,13 +10,14 @@ import { NavigationComponent } from './compnent/navigation/navigation.component'
 import {SigninComponent} from './compnent/signin/signin.component'
 import {SignupComponent} from './compnent/signup/signup.component'
 import { RouterModule } from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+
 import { ToastrModule } from 'ngx-toastr';
 import {wshTaskInterceptorProviders} from './service/interceptor/interceptor.barrel';
 import { TaskAllComponent } from './compnent/task/task-all/task-all.component';
 import { TaskUserComponent } from './compnent/task/task-user/task-user.component';
 import { TaskDetailComponent } from './compnent/task/task-detail/task-detail.component';
 import { TaskCreateComponent } from './compnent/task/task-create/task-create.component'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,13 +40,12 @@ import { TaskCreateComponent } from './compnent/task/task-create/task-create.com
     TaskRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
-    BrowserAnimationsModule,
+   // RouterModule,
     ToastrModule.forRoot(),
     TaskRoutingModule
   ], 
   providers: [
-    wshTaskInterceptorProviders
+    //wshTaskInterceptorProviders
   ]
 })
 export class TaskModule { }

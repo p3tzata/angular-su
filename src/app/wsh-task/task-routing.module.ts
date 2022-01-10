@@ -14,20 +14,18 @@ import { AuthGuard } from './service/authentication/guards/auth.guard';
 
 const routes: Routes = [
 
-  {path: "task" , component: IndexComponent,
-   children: [
     {path: "", pathMatch:"full", component: HomeComponent,outlet:'taskRouterOutlet'},
     {path: "home", pathMatch:"full", component: HomeComponent,outlet:'taskRouterOutlet'},
      {path: "signin", component: SigninComponent,outlet:'taskRouterOutlet'},
      {path: "signup", component: SignupComponent,outlet:'taskRouterOutlet'},
-     {path: "create", component: TaskCreateComponent,outlet:'taskRouterOutlet', canActivate: [AuthGuard]},
+     {path: "create", component: TaskCreateComponent, canActivate: [AuthGuard],outlet:'taskRouterOutlet'},
      {path: "all", component: TaskAllComponent,outlet:'taskRouterOutlet', canActivate: [AuthGuard]},
      {path: "detail/:id", component: TaskDetailComponent,outlet:'taskRouterOutlet', canActivate: [AuthGuard]},
      {path: "user", component: TaskUserComponent,outlet:'taskRouterOutlet', canActivate: [AuthGuard]},
-   ]
-  }
+   
 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

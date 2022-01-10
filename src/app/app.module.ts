@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListComponent } from './todoDb/component/list/list.component';
@@ -49,7 +49,9 @@ import { PostCountPipe } from './pipeAuthInterc/post-count.pipe';
 import { PostCountPurePipe } from './pipeAuthInterc/post-count-pure.pipe';
 import { UserListComponent } from './pipeAuthInterc/user-list/user-list.component';
 import { httpInterceptorProviders } from './pipeAuthInterc/innterceptior/interceptor.barrel';
-import {TaskModule} from './wsh-task/task.module'
+import { wshTaskInterceptorProviders } from './wsh-task/service/interceptor/interceptor.barrel';
+import { ToastrModule } from 'ngx-toastr';
+//import {TaskModule} from './wsh-task/task.module'
 
 
 
@@ -98,7 +100,8 @@ import {TaskModule} from './wsh-task/task.module'
     
   ],
   imports: [
-    BrowserModule,
+   // BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     TodoModule,
@@ -106,13 +109,15 @@ import {TaskModule} from './wsh-task/task.module'
     FormsModule,
     ReactiveFormsModule,
     MovieModule,
-    TaskModule,
+    ToastrModule.forRoot(),
+    //TaskModule,
     
   ],
   providers: [
     {provide:TodoService,
     useClass:TodoService}, //This is not necessary when provideIn is used.
    // httpInterceptorProviders,
+   wshTaskInterceptorProviders,
   ],
   bootstrap: [AppComponent]
 })

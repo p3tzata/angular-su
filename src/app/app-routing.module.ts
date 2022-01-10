@@ -22,8 +22,9 @@ import {LearningDirectiveComponent} from './directiveLearnging/component/learnin
 import {FormTDComponent} from './formTemplateDrivenLearning/form-td/form-td.component'
 import {FormRComponent} from './formReactiveLearning/form-r/form-r.component'
 import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
-import {TaskRoutingModule } from './wsh-task/task-routing.module'
+//import {TaskRoutingModule } from './wsh-task/task-routing.module'
 import {PipeLearningComponent} from './pipeAuthInterc/pipe-learning/pipe-learning.component'
+import { IndexComponent } from './wsh-task/compnent/index/index.component';
 
 
 // This is userfriendly for Google bot.
@@ -107,7 +108,7 @@ const routes: Routes = [
   ]
   }, 
   
-  {path: 'task', loadChildren: '() => import ("./wsh-task/task-routing.module").then(m => m.TaskRoutingModule)'},
+  {path: 'task',component: IndexComponent, loadChildren: () => import ("./wsh-task/task.module").then(m => m.TaskModule)},
   
   {path: "**",
   component: NotfoundComponent},
