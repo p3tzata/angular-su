@@ -110,6 +110,14 @@ const routes: Routes = [
   
   {path: 'task',component: IndexComponent, loadChildren: () => import ("./wsh-task/task.module").then(m => m.TaskModule)},
   
+  
+  
+  { path: 'lazyLoadingUrl', loadChildren: () => import('./bestStyle-FakeDirectoryLowLevel/lazy-loading/lazy-loading.module').then(m => m.LazyLoadingModule) },
+  
+  
+
+ 
+
   {path: "**",
   component: NotfoundComponent},
   

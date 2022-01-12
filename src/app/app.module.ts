@@ -23,6 +23,7 @@ import { TodoModule } from './todoDb/module/todo/todo.module';
 import { HomeComponent } from './todoDb/component/home/home.component';
 import { AboutComponent } from './todoDb/component/about/about.component';
 import { CoreModule } from './core/core.module';
+import { CoreModule as CoreModuleBestStyle } from './bestStyle-FakeDirectoryLowLevel/core/core.module';
 import { TodoListComponent } from './todoDb/component/todo-list/todo-list.component';
 
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
@@ -51,6 +52,9 @@ import { UserListComponent } from './pipeAuthInterc/user-list/user-list.componen
 import { httpInterceptorProviders } from './pipeAuthInterc/innterceptior/interceptor.barrel';
 import { wshTaskInterceptorProviders } from './wsh-task/service/interceptor/interceptor.barrel';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './bestStyle-FakeDirectoryLowLevel/shared/shared.module';
+import { UserModule } from './bestStyle-FakeDirectoryLowLevel/user/user.module';
+import { EmployeeModule } from './bestStyle-FakeDirectoryLowLevel/employee/employee.module';
 //import {TaskModule} from './wsh-task/task.module'
 
 
@@ -111,6 +115,11 @@ import { ToastrModule } from 'ngx-toastr';
     MovieModule,
     ToastrModule.forRoot(),
     //TaskModule,
+    CoreModuleBestStyle,
+    SharedModule.forRoot(),
+    //SharedModule,
+    UserModule,
+    EmployeeModule
     
   ],
   providers: [
