@@ -41,7 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
    // RouterModule,
-    ToastrModule.forRoot(),
+    
     TaskRoutingModule
   ], 
   providers: [

@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LazyLoadingRoutingModule } from './lazy-loading-routing.module';
-import { LazyLoadingComponent } from './lazy-loading.component';
+import { ListComponent } from './component/list/list.component';
+import { EntityComponent } from './component/entity/entity.component';
 
 
 @NgModule({
   declarations: [
-    LazyLoadingComponent
+   
+    ListComponent,
+    EntityComponent
   ],
   imports: [
     CommonModule,

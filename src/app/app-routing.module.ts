@@ -1,5 +1,5 @@
 import { Component, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './todoDb/component/about/about.component';
 import { HomeComponent } from './todoDb/component/home/home.component';
 import { ListComponent } from './todoDb/component/list/list.component';
@@ -25,7 +25,8 @@ import { WshFormRoutingModule } from './wsh-forms/wsh-form-routing.module';
 //import {TaskRoutingModule } from './wsh-task/task-routing.module'
 import {PipeLearningComponent} from './pipeAuthInterc/pipe-learning/pipe-learning.component'
 import { IndexComponent } from './wsh-task/compnent/index/index.component';
-
+import {IndexComponent as WshPostComentIndexComponent} from './wsh-postComment-Structure/core/component/shared/index/index.component'
+import {IndexComponent as BestStyleIndexCompnent} from './bestStyle-FakeDirectoryLowLevel/core/component/index/index.component'
 
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
@@ -110,9 +111,13 @@ const routes: Routes = [
   
   {path: 'task',component: IndexComponent, loadChildren: () => import ("./wsh-task/task.module").then(m => m.TaskModule)},
   
+  {path: 'bestStyle', component: BestStyleIndexCompnent},
+  
+  { path: 'bestStyle/lazyLoadingUrl',component: BestStyleIndexCompnent, loadChildren: () => import('./bestStyle-FakeDirectoryLowLevel/lazy-loading/lazy-loading.module').then(m => m.LazyLoadingModule) },
   
   
-  { path: 'lazyLoadingUrl', loadChildren: () => import('./bestStyle-FakeDirectoryLowLevel/lazy-loading/lazy-loading.module').then(m => m.LazyLoadingModule) },
+  
+  { path: 'postComentStructure',component: WshPostComentIndexComponent, loadChildren: () => import('./wsh-postComment-Structure/core/core.module').then(m => m.CoreModule) },
   
   
 
@@ -127,7 +132,11 @@ const routes: Routes = [
 
 @NgModule({
   //imports: [RouterModule.forRoot(routes),TaskRoutingModule,WshFormRoutingModule],
-  imports: [RouterModule.forRoot(routes),WshFormRoutingModule],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules, //Explain: this will load and lazy-loading module 
+                                            //despite of that they be called
+    enableTracing: false //Expain this is good for debugging
+  }),WshFormRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

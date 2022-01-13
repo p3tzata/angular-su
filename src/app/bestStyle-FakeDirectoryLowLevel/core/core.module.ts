@@ -1,13 +1,20 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavComponent } from './component/nav/nav.component';
+import {  RouterModule } from '@angular/router';
+import { IndexComponent } from './component/index/index.component';
 
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    NavComponent,
+    IndexComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule //Explain: this only will import directives.
   ]
 })
 export class CoreModule {

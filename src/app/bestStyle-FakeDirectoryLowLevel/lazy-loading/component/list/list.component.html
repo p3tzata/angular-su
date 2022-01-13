@@ -1,0 +1,5 @@
+<p>list works!</p>
+<div *ngIf='(userList$ | async)!.length===0'>No users</div>
+<ul>
+    <li *ngFor='let user of userList$ |async'>{{user.username}}</li>
+</ul>
