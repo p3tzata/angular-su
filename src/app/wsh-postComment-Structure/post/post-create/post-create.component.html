@@ -1,0 +1,13 @@
+<div class="container">
+
+    <form #f="ngForm" (ngSubmit)="createPost()" id="submitForm" class="submitForm">
+        <label>Link URL:</label>
+        <input required name="url" ngModel type="text">
+        <br>
+       
+        <label>Description (optional):</label><br>
+        <textarea name="description" ngModel></textarea>
+        <input id="btnSubmitPost" [disabled]="f.invalid" value="Submit" type="submit">
+      </form>
+
+</div>

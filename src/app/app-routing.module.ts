@@ -120,6 +120,12 @@ const routes: Routes = [
   { path: 'postComentStructure',component: WshPostComentIndexComponent, loadChildren: () => import('./wsh-postComment-Structure/core/core.module').then(m => m.CoreModule) },
   
   
+  
+  
+  
+  
+  
+  
 
  
 

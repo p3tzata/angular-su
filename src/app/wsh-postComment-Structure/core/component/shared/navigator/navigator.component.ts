@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../core/service/auth.service';
+import { AuthService } from '../../../../auth/shared/auth.service';
 
 @Component({
   selector: 'app-navigator',
@@ -13,6 +13,9 @@ export class NavigatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  isAuthenticated() {
+    return this.authService.isAuthenticated()
+  }
 
   logOut(){
     this.authService.logout();

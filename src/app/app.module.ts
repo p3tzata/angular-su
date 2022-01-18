@@ -51,6 +51,7 @@ import { PostCountPurePipe } from './pipeAuthInterc/post-count-pure.pipe';
 import { UserListComponent } from './pipeAuthInterc/user-list/user-list.component';
 import { httpInterceptorProviders } from './pipeAuthInterc/innterceptior/interceptor.barrel';
 import { wshTaskInterceptorProviders } from './wsh-task/service/interceptor/interceptor.barrel';
+import {wshPostComentStrcInterceptorProviders} from './wsh-postComment-Structure/core/interceptor/interceptor.barrel'
 import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './bestStyle-FakeDirectoryLowLevel/shared/shared.module';
 import { UserModule } from './bestStyle-FakeDirectoryLowLevel/user/user.module';
@@ -127,6 +128,7 @@ import { EmployeeModule } from './bestStyle-FakeDirectoryLowLevel/employee/emplo
     useClass:TodoService}, //This is not necessary when provideIn is used.
    // httpInterceptorProviders,
    wshTaskInterceptorProviders,
+   wshPostComentStrcInterceptorProviders,
   ],
   bootstrap: [AppComponent]
 })

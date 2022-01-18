@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { SharedModule } from './component/shared/shared.module';
-import { HomeComponent } from './component/home/home.component';
+import { HomeComponent } from '../home/home.component';
+import {CollapseDirective} from '../core/component/shared/navigator/collapse.directive'
+import {DropdownDirective} from '../core/component/shared/navigator/dropdown.directive'
 
 
 @NgModule({
   declarations: [
-    
-  
-    HomeComponent
+
   ],
   imports: [
     CommonModule,
