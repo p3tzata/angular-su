@@ -56,7 +56,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { SharedModule } from './bestStyle-FakeDirectoryLowLevel/shared/shared.module';
 import { UserModule } from './bestStyle-FakeDirectoryLowLevel/user/user.module';
 import { EmployeeModule } from './bestStyle-FakeDirectoryLowLevel/employee/employee.module';
+import {StoreModule} from '@ngrx/store'
 //import {TaskModule} from './wsh-task/task.module'
+import {reducers} from './redux/+store/reducer'
 
 
 
@@ -120,7 +122,8 @@ import { EmployeeModule } from './bestStyle-FakeDirectoryLowLevel/employee/emplo
     SharedModule.forRoot(),
     //SharedModule,
     UserModule,
-    EmployeeModule
+    EmployeeModule,
+    StoreModule.forRoot(reducers) //Explain: forFeature() is for feature module(not root/app module). this is same of forChild();
     
   ],
   providers: [

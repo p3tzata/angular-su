@@ -121,6 +121,10 @@ const routes: Routes = [
   
   
   
+  { path: 'redux', loadChildren: () => import('./redux/redux.module').then(m => m.ReduxModule) },
+  
+  
+  
   
   
   
