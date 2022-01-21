@@ -1,0 +1,7 @@
+<p>user-list-with-resolver works!</p>
+<ul>
+    <li *ngFor="let user of (users$ | async)">{{user.username}}
+        <button (click)="selectBookHandler(user.id)">Select Books</button>
+        <button (click)="deleteHandler(user.id)" >Delete</button> </li>
+</ul>
+

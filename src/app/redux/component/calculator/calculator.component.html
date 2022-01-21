@@ -1,0 +1,18 @@
+<h3>With subscribtion</h3>
+<p>Counter: {{counter}}, 
+    <br> Times of Reset: {{timesOfReset}}
+    <br>last timestamp of reset: {{lastTimeOfReset | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+
+    <div *ngIf="(counter$ | async) as cnt">
+       
+        <h3>With async</h3>
+        <p>Counter: {{cnt.count}}, 
+            <br> Times of Reset: {{cnt.timesOfReset}}
+            <br>last timestamp of reset: {{cnt.lastTimeOfReset | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+       
+    </div>
+
+    
+<button (click)="increment()">Inc</button>
+<button (click)="decrement()">Decr</button>
+<button (click)="reset()">Reset</button>
