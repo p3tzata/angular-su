@@ -1,0 +1,11 @@
+<div *ngIf="(booksOfUser$ | async) as books; else selectUser">
+    Books of user:
+<ul>
+    <li *ngFor="let book of books"> {{book.name}} </li>
+</ul>
+
+</div>
+
+<ng-template #selectUser>
+    <div >Please select user</div>
+</ng-template>

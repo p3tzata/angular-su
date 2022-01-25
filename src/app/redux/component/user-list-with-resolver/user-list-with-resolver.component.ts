@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store'
 import { Observable } from 'rxjs';
 import {IState, IUserModuleState} from '../../+store/'
 import { deleteUser,seedBooks,selectUser } from '../../+store/reducer/user/user.action';
-import {booksCountSelector} from '../../+store/reducer/user/user.selector'
+import {booksCountSelector, booksOfUserSelector,booksUndefindedSelector} from '../../+store/reducer/user/user.selector'
 import { User } from '../../../interfaces/user-jsonFreeApi';
 import { Book } from '../../../interfaces/book';
 @Component({
@@ -15,10 +15,15 @@ export class UserListWithResolverComponent implements OnInit {
 
   users$!: Observable<User[]>
   bookCount$!: Observable<number>
+  
+  booksUndefinded$!: Observable<Book[]>
+
   constructor(private store: Store<{userModule: IUserModuleState}>) {
     //Expain: ToDo there is posibility to use selector considering hashing. I have to search in Internet
     this.users$=this.store.select(x=>{return x.userModule.user.userList})
     this.bookCount$=this.store.select(x=>booksCountSelector(x));
+    
+    this.booksUndefinded$=this.store.pipe(booksUndefindedSelector);
    }
 
    deleteHandler(userId:number) {
@@ -31,7 +36,7 @@ export class UserListWithResolverComponent implements OnInit {
 
 
   seedBookHandler(){
-    let books: Book[] = [
+    let books: (Book)[] = [
       {id: 1 ,userId:1, name:"sssss"},
       {id: 2 ,userId:1, name:"dfdf"},
       {id: 3 ,userId:1, name:"sssdfdfss"},
@@ -41,6 +46,7 @@ export class UserListWithResolverComponent implements OnInit {
       {id: 7 ,userId:3, name:"sfsd"},
       {id: 8 ,userId:3, name:"ssfddssss"},
       {id: 9 ,userId:4, name:"sffd"},
+      
   ];
     this.store.dispatch(seedBooks({bookList: books }));
   }

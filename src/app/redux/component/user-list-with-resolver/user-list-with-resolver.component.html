@@ -1,10 +1,21 @@
 <p>user-list-with-resolver works!</p>
 <button (click)="seedBookHandler()">Seed Books</button> 
 <br>count of books: {{bookCount$ | async}}
-<br><br><br><br>
+<br><br>
+<app-add-book></app-add-book>
+<br><br>
 <ul>
     <li *ngFor="let user of (users$ | async)">{{user.username}}
         <button (click)="selectBookHandler(user.id)">Select Books</button>
         <button (click)="deleteHandler(user.id)" >Delete</button> </li>
 </ul>
+All book [with pipe and select]
+<ul>
+    <li *ngFor="let book of (this.booksUndefinded$ | async)">{{book.name}}
+        
+</ul>
+
+<app-books-of-user></app-books-of-user>
+
+
 
