@@ -1,16 +1,17 @@
 //Explain: in real scenario, this is root store logic. +store have to be in app folder.
 import { ActionReducerMap } from '@ngrx/store';
+
 import {ICoutnerState, reducerCounterFn} from './reducer/counter/counter.reducer'
 import { IUserState, reducerUserFn } from './reducer/user/user.reducer';
 
 export interface IState {
-    counter69: ICoutnerState
+    readonly  counter69: ICoutnerState
    // user: IUserState
 }
 
 export interface IUserModuleState {
     //counter69: ICoutnerState
-    user: IUserState
+  readonly  user: IUserState
 }
 
 export const reducersForRoot:ActionReducerMap<IState> = {
@@ -24,4 +25,8 @@ export const reducersForUserFeature:ActionReducerMap<IUserModuleState> = {
 }
 
 
-const exampleOfReducer = [2,3,4,5].reduce( (acc,curentVal) => {return acc+curentVal} ,0);
+const exampleOfReducer = [2,3,4,5]
+.reduce( (acc,curentVal) => {return acc+curentVal} ,0);
+
+const exampleOfReduxReducer = [{type: 'ACTION-ADD',payload: 1},{type: 'ACTION-SUB',payload: 1} ]
+.reduce( (state, action) => {if (action.type=='ACTION-ADD') {return {...state, val1:state.val1+action.payload}} else {return {...state}} }    , {val1:1,val2:10})

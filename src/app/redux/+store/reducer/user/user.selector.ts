@@ -1,5 +1,5 @@
 
-import { select } from '@ngrx/store';
+import { createFeatureSelector, select } from '@ngrx/store';
 import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -8,6 +8,10 @@ import { IUserModuleState } from "../..";
 import { Book } from "../../../../interfaces/book";
 import { User } from "../../../../interfaces/user-jsonFreeApi";
 import { IUserState } from "./user.reducer";
+
+const userModuleSelector=createFeatureSelector<IUserState>('userModule');
+const moduleState1 =  (userModuleSelector:IUserState) => { return userModuleSelector };
+
  const moduleState =  (state: {userModule: IUserModuleState}) => { return state.userModule.user};
  
  const selectUser = (state: {userModule: IUserModuleState})  => state.userModule.user.selectedUser;
@@ -15,8 +19,11 @@ import { IUserState } from "./user.reducer";
  
 
 export const booksCountSelector = createSelector(
-    (moduleState) ,
+  //  userModuleSelector,
+  //  state => state.booksList.length
+     moduleState,
     (state: IUserState) => state.booksList.length
+
 );
 
 export const booksUndefindedSelector = pipe (

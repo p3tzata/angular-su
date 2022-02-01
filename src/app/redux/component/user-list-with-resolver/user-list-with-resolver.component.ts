@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store'
-import { Observable } from 'rxjs';
+import {  from, merge, Observable, of } from 'rxjs';
 import {IState, IUserModuleState} from '../../+store/'
-import { deleteUser,seedBooks,selectUser } from '../../+store/reducer/user/user.action';
+import { clearAppState, clearState, deleteUser,seedBooks,seedPosts,seedPostsFail,seedPostsSuccess,selectUser, testEffect } from '../../+store/reducer/user/user.action';
 import {booksCountSelector, booksOfUserSelector,booksUndefindedSelector} from '../../+store/reducer/user/user.selector'
 import { User } from '../../../interfaces/user-jsonFreeApi';
 import { Book } from '../../../interfaces/book';
+import { Post } from '../../../interfaces/post-jsonFreeApi';
+import { merge as mergeStatic } from 'rxjs/internal/observable/merge';
+import { Actions, ofType } from '@ngrx/effects';
+import { mapTo } from 'rxjs/operators';
+
 @Component({
   selector: 'app-user-list-with-resolver',
   templateUrl: './user-list-with-resolver.component.html',
@@ -15,15 +20,25 @@ export class UserListWithResolverComponent implements OnInit {
 
   users$!: Observable<User[]>
   bookCount$!: Observable<number>
-  
+  posts$!: Observable<Post[]>
   booksUndefinded$!: Observable<Book[]>
+  isLoadingPosts$!:Observable<boolean>;
 
-  constructor(private store: Store<{userModule: IUserModuleState}>) {
+  constructor(private store: Store<{userModule: IUserModuleState}>, private action$:Actions) {
+  
     //Expain: ToDo there is posibility to use selector considering hashing. I have to search in Internet
     this.users$=this.store.select(x=>{return x.userModule.user.userList})
     this.bookCount$=this.store.select(x=>booksCountSelector(x));
-    
+    //this.bookCount$=this.store.select(booksCountSelector);
+    this.posts$=this.store.select(x=>{return x.userModule.user.postsList});
     this.booksUndefinded$=this.store.pipe(booksUndefindedSelector);
+    this.isLoadingPosts$=mergeStatic(
+      this.action$.pipe(ofType(seedPosts),mapTo(true)),
+      this.action$.pipe(ofType(seedPostsSuccess),mapTo(false)),
+      this.action$.pipe(ofType(seedPostsFail),mapTo(false)),
+      of(false) //Defaul emitted value
+    )
+
    }
 
    deleteHandler(userId:number) {
@@ -49,6 +64,22 @@ export class UserListWithResolverComponent implements OnInit {
       
   ];
     this.store.dispatch(seedBooks({bookList: books }));
+  }
+
+  testEffect(){
+    this.store.dispatch(testEffect());
+  }
+
+  seedPostEffect(){
+    this.store.dispatch(seedPosts());
+  }
+
+  clearState(){
+    this.store.dispatch(clearState())
+  }
+
+  clearAppState(){
+    this.store.dispatch(clearAppState())
   }
 
   ngOnInit(): void {

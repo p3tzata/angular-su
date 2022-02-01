@@ -1,6 +1,12 @@
 <p>user-list-with-resolver works!</p>
-<button (click)="seedBookHandler()">Seed Books</button> 
+<button (click)="seedBookHandler()">Seed Books</button> - 
+<button (click)="testEffect()">Test Effect</button> -
+<button (click)="seedPostEffect()">Seed post Effect</button> -
+<div *ngIf='(isLoadingPosts$ | async)'>Loading posts ....</div>
+<button (click)="clearState()">Clear State</button> - 
+<button (click)="clearAppState()">Clear App State</button> 
 <br>count of books: {{bookCount$ | async}}
+
 <br><br>
 <app-add-book></app-add-book>
 <br><br>
@@ -15,7 +21,21 @@ All book [with pipe and select]
         
 </ul>
 
+
+
+
 <app-books-of-user></app-books-of-user>
 
+<div *ngIf="!(this.isLoadingPosts$ | async) &&  (this.posts$ | async) as posts">
 
+    Posts [with effect]
+   
+   <ul *ngIf="posts.length>0">
+       <li *ngFor="let post of posts">{{post.title}}
+   </ul>
+   
+   <div *ngIf='posts.length==0'>No posts, please press 'seed Post' button</div>
+   
+   
+   </div>
 

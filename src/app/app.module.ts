@@ -60,7 +60,8 @@ import {StoreModule} from '@ngrx/store'
 //import {TaskModule} from './wsh-task/task.module'
 import {reducersForRoot} from './redux/+store/'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
-
+import {EffectsModule} from '@ngrx/effects'
+import {metaReducers} from './redux/+store/meta-reducer'
 
 
 
@@ -124,7 +125,8 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools'
     //SharedModule,
     UserModule,
     EmployeeModule,
-    StoreModule.forRoot(reducersForRoot), //Explain: forFeature() is for feature module(not root/app module). this is same of forChild();
+    StoreModule.forRoot(reducersForRoot,{metaReducers}), //Explain: forFeature() is for feature module(not root/app module). this is same of forChild();
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument()
   ],
   providers: [
