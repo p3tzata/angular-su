@@ -4,9 +4,9 @@ import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { createSelector } from "@ngrx/store";
-import { IUserModuleState } from "../..";
-import { Book } from "../../../../interfaces/book";
-import { User } from "../../../../interfaces/user-jsonFreeApi";
+import { IUserModuleState } from "../";
+import { Book } from "../../../interfaces/book";
+import { User } from "../../../interfaces/user-jsonFreeApi";
 import { IUserState } from "./user.reducer";
 
 const userModuleSelector=createFeatureSelector<IUserState>('userModule');
@@ -25,6 +25,16 @@ export const booksCountSelector = createSelector(
     (state: IUserState) => state.booksList.length
 
 );
+
+export const userTokenSelector = createSelector(
+  //  userModuleSelector,
+  //  state => state.booksList.length
+     moduleState,
+    (state: IUserState) => state.userToken
+
+);
+
+
 
 export const booksUndefindedSelector = pipe (
   select(books),

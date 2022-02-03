@@ -45,7 +45,7 @@ export class PipeLearningComponent implements OnInit {
   users$!: Observable<User[]>;
   posts$!: Observable<Post[]>;
   zipped:any={};
-  isAlive$: Subject<any> = new Subject<any>();
+  killSubscription$: Subject<any> = new Subject<any>();
 
 
 
@@ -61,7 +61,7 @@ export class PipeLearningComponent implements OnInit {
     
     //Explain: this have to be used, when async is imposible to be used.
     zip(this.userService.getUsers(),this.postService.getPost())
-    .pipe(takeUntil(this.isAlive$))
+    .pipe(takeUntil(this.killSubscription$))
     .subscribe( ([users,posts]) => {
       this.zipped["users"]=users, this.zipped["posts"]=posts;
      
@@ -100,8 +100,8 @@ export class PipeLearningComponent implements OnInit {
 
 
   ngOnDestroy(){
-    this.isAlive$.next();
-    this.isAlive$.complete();
+    this.killSubscription$.next();
+    this.killSubscription$.complete();
   }
 
 

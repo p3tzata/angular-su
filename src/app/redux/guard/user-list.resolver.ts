@@ -10,7 +10,7 @@ import { UserService } from '../service/user.service';
 import {User} from '../../interfaces/user'
 import { IState } from '../+store';
 import { Store } from '@ngrx/store';
-import { addUsers } from '../+store/reducer/user/user.action';
+import { addUsers } from '../+store/user/user.action';
 
 @Injectable(/**/{
   providedIn: 'root'

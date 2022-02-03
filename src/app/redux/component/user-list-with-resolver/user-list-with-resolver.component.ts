@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store'
 import {  from, merge, Observable, of } from 'rxjs';
 import {IState, IUserModuleState} from '../../+store/'
-import { clearAppState, clearState, deleteUser,seedBooks,seedPosts,seedPostsFail,seedPostsSuccess,selectUser, testEffect } from '../../+store/reducer/user/user.action';
-import {booksCountSelector, booksOfUserSelector,booksUndefindedSelector} from '../../+store/reducer/user/user.selector'
+import { clearAppState, clearState, deleteUser,seedBooks,seedPosts,seedPostsFail,seedPostsSuccess,selectUser, testEffect } from '../../+store/user/user.action';
+import {booksCountSelector, booksOfUserSelector,booksUndefindedSelector} from '../../+store/user/user.selector'
 import { User } from '../../../interfaces/user-jsonFreeApi';
 import { Book } from '../../../interfaces/book';
 import { Post } from '../../../interfaces/post-jsonFreeApi';
@@ -71,7 +71,7 @@ export class UserListWithResolverComponent implements OnInit {
   }
 
   seedPostEffect(){
-    this.store.dispatch(seedPosts());
+    this.store.dispatch(seedPosts({fakeParam: 1}));
   }
 
   clearState(){

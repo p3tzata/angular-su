@@ -1,11 +1,13 @@
 //Explain: in real scenario, this is root store logic. +store have to be in app folder.
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { ActionReducerMap } from '@ngrx/store';
 
-import {ICoutnerState, reducerCounterFn} from './reducer/counter/counter.reducer'
-import { IUserState, reducerUserFn } from './reducer/user/user.reducer';
+import {ICoutnerState, reducerCounterFn} from './counter/counter.reducer'
+import { IUserState, reducerUserFn } from './user/user.reducer';
 
 export interface IState {
     readonly  counter69: ICoutnerState
+    readonly  router: RouterReducerState<any>;
    // user: IUserState
 }
 
@@ -16,6 +18,7 @@ export interface IUserModuleState {
 
 export const reducersForRoot:ActionReducerMap<IState> = {
     counter69: reducerCounterFn,
+    router: routerReducer
     //user: reducerUserFn
 }
 

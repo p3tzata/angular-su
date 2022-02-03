@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { IUserModuleState } from '../../+store';
-import { addBookToUser } from '../../+store/reducer/user/user.action';
+import { addBookToUser } from '../../+store/user/user.action';
 import { Book } from '../../../interfaces/book';
 
 @Component({

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
@@ -62,8 +62,9 @@ import {reducersForRoot} from './redux/+store/'
 import {StoreDevtoolsModule} from '@ngrx/store-devtools'
 import {EffectsModule} from '@ngrx/effects'
 import {metaReducers} from './redux/+store/meta-reducer'
-
-
+import {JwtStoreInterceptor} from './redux/service/jwt-store.interceptor';
+import { StoreRouterConnectingModule } from '@ngrx/router-store'
+import {CustomSerializer} from './redux/+store/routeStore-serializer'
 
 @NgModule({
   declarations: [
@@ -127,12 +128,16 @@ import {metaReducers} from './redux/+store/meta-reducer'
     EmployeeModule,
     StoreModule.forRoot(reducersForRoot,{metaReducers}), //Explain: forFeature() is for feature module(not root/app module). this is same of forChild();
     EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer
+    })
   ],
   providers: [
     {provide:TodoService,
     useClass:TodoService}, //This is not necessary when provideIn is used.
    // httpInterceptorProviders,
+   { provide: HTTP_INTERCEPTORS, useClass: JwtStoreInterceptor, multi: true },
    wshTaskInterceptorProviders,
    wshPostComentStrcInterceptorProviders,
   ],

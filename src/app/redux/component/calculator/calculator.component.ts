@@ -3,8 +3,8 @@ import {Store} from '@ngrx/store'
 import { Observable, Subscription } from 'rxjs';
 import { IState } from '../../+store';
 
-import {incrementCounter,decrementCounter,resetCounter} from '../../+store/reducer/counter/counter.action'
-import { ICoutnerState } from '../../+store/reducer/counter/counter.reducer';
+import {incrementCounter,decrementCounter,resetCounter} from '../../+store/counter/counter.action'
+import { ICoutnerState } from '../../+store/counter/counter.reducer';
 @Component({
   selector: 'app-calcolator',
   templateUrl: './calculator.component.html',

@@ -13,6 +13,26 @@ import {ToastrService} from 'ngx-toastr'
 @Injectable()
 export class ResponseHendlerInterceptor implements HttpInterceptor {
 
+  // Expain: ToastrService must not be here, it must be called by action in effects. See redux subfolder. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+
+
   constructor(private toastr: ToastrService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {

@@ -1,7 +1,8 @@
 import { Action, ActionReducer, MetaReducer } from "@ngrx/store";
-import { clearAppState } from "./reducer/user/user.action";
+import { clearAppState } from "./user/user.action";
 
 //Explain: with meta reducer we can control top level of state.
+// or use ngrx freeze store
 
 function clearAppStateMetaReducer(reducer: ActionReducer<any>): ActionReducer<any> {
 
