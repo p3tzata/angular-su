@@ -25,7 +25,7 @@ export class UserEffect implements OnInitEffects{
     //Expain - this will prevent of loosing token when refresh window.
     initEffect = createEffect(()=> this.action$.pipe(
         ofType(initAction),
-        tap(()=>{debugger;console.log('sss')}), //Explain if we call external function or service we have to call them in tap() to be more consistency
+        tap(()=>{console.log('sss')}), //Explain if we call external function or service we have to call them in tap() to be more consistency
         switchMap(() => {
             
             const token=this.authSrv.getToken();

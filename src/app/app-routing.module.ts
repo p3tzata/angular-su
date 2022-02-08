@@ -27,7 +27,7 @@ import {PipeLearningComponent} from './pipeAuthInterc/pipe-learning/pipe-learnin
 import { IndexComponent } from './wsh-task/compnent/index/index.component';
 import {IndexComponent as WshPostComentIndexComponent} from './wsh-postComment-Structure/core/component/shared/index/index.component'
 import {IndexComponent as BestStyleIndexCompnent} from './bestStyle-FakeDirectoryLowLevel/core/component/index/index.component'
-import {MaterialLnComponent} from './material-ln/index/material-ln.component'
+import {NavigatorComponent} from './material-ln/shared/navigator/navigator.component'
 
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
@@ -126,7 +126,7 @@ const routes: Routes = [
   
   
   
-  { path: 'materialLn', component: MaterialLnComponent, loadChildren: () => import('./material-ln/material-ln.module').then(m => m.MaterialLnModule) },
+  { path: 'materialLn', component: NavigatorComponent, loadChildren: () => import('./material-ln/material-ln.module').then(m => m.MaterialLnModule) },
   
   
   
