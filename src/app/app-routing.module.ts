@@ -27,6 +27,7 @@ import {PipeLearningComponent} from './pipeAuthInterc/pipe-learning/pipe-learnin
 import { IndexComponent } from './wsh-task/compnent/index/index.component';
 import {IndexComponent as WshPostComentIndexComponent} from './wsh-postComment-Structure/core/component/shared/index/index.component'
 import {IndexComponent as BestStyleIndexCompnent} from './bestStyle-FakeDirectoryLowLevel/core/component/index/index.component'
+import {MaterialLnComponent} from './material-ln/index/material-ln.component'
 
 // This is userfriendly for Google bot.
 // When we set array in .ts. that is not userfriendly.
@@ -122,6 +123,10 @@ const routes: Routes = [
   
   
   { path: 'redux', loadChildren: () => import('./redux/redux.module').then(m => m.ReduxModule) },
+  
+  
+  
+  { path: 'materialLn', component: MaterialLnComponent, loadChildren: () => import('./material-ln/material-ln.module').then(m => m.MaterialLnModule) },
   
   
   
